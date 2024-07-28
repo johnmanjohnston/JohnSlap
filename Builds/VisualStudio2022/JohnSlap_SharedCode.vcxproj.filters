@@ -616,6 +616,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\SlapSynth.cpp">
+      <Filter>JohnSlap\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
       <Filter>JohnSlap\Source</Filter>
     </ClCompile>
@@ -3144,6 +3147,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\SlapSynth.h">
+      <Filter>JohnSlap\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
       <Filter>JohnSlap\Source</Filter>
     </ClInclude>

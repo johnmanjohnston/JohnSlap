@@ -95,6 +95,9 @@ void JohnSlapAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
+
+    synth.setCurrentPlaybackSampleRate(sampleRate);
+    synth.setup();
 }
 
 void JohnSlapAudioProcessor::releaseResources()
@@ -156,6 +159,8 @@ void JohnSlapAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
 
         // ..do something to the data...
     }
+
+    synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
 }
 
 //==============================================================================

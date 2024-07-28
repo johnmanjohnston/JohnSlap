@@ -4,6 +4,8 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="nqUoqa" name="JohnSlap">
     <GROUP id="{722B7FBA-8D7D-7DF3-3409-F8229AD1D53D}" name="Source">
+      <FILE id="tB7KPM" name="SlapSynth.cpp" compile="1" resource="0" file="Source/SlapSynth.cpp"/>
+      <FILE id="fZHCSf" name="SlapSynth.h" compile="0" resource="0" file="Source/SlapSynth.h"/>
       <FILE id="LFKIn9" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="BiV8Zd" name="PluginProcessor.h" compile="0" resource="0"
