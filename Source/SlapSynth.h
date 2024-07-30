@@ -14,6 +14,7 @@
 class SlapSynth : public juce::Synthesiser {
 public:
     void setup();
+    void updateSampleSource(juce::MidiBuffer& midiMessages);
     juce::BigInteger noteRange;
 
 private:

@@ -160,6 +160,7 @@ void JohnSlapAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
         // ..do something to the data...
     }
 
+    synth.updateSampleSource(midiMessages);
     synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
 }
 

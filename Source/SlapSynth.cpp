@@ -26,3 +26,29 @@ void SlapSynth::setup()
 
     addSound(new juce::SamplerSound("default", *reader, noteRange, 69, 0.f, 0.2f, 2.f));
 }
+
+void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
+{
+    if (midiMessages.isEmpty()) return;
+
+    for (const auto midiData : midiMessages) {
+        const auto msg = midiData.getMessage();
+        const auto noteNumber = msg.getNoteNumber(); 
+        const auto noteName = msg.getMidiNoteName(noteNumber, false, false, 3);
+
+        // TODO: update sample source based on noteName
+        DBG(noteName);
+
+        removeSound(0);
+
+
+        juce::String fpath = "C:\\Users\\USER\\other-nerd-stuff\\projects\\JohnSlap\\samples\\trbx174\\";
+        fpath.append(noteName, 2);
+        fpath.append(".wav", 4);
+
+        juce::File* file = new juce::File(fpath);
+        juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file);
+
+        addSound(new juce::SamplerSound("default", *reader, noteRange, noteNumber, 0.f, 0.2f, 2.f));
+    }
+}
