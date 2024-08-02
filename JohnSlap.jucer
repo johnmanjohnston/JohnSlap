@@ -4,6 +4,10 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="nqUoqa" name="JohnSlap">
     <GROUP id="{722B7FBA-8D7D-7DF3-3409-F8229AD1D53D}" name="Source">
+      <FILE id="pRu7Kl" name="JSMidiKeyboardComponent.cpp" compile="1" resource="0"
+            file="Source/JSMidiKeyboardComponent.cpp"/>
+      <FILE id="EcIbyE" name="JSMidiKeyboardComponent.h" compile="0" resource="0"
+            file="Source/JSMidiKeyboardComponent.h"/>
       <FILE id="tB7KPM" name="SlapSynth.cpp" compile="1" resource="0" file="Source/SlapSynth.cpp"/>
       <FILE id="fZHCSf" name="SlapSynth.h" compile="0" resource="0" file="Source/SlapSynth.h"/>
       <FILE id="LFKIn9" name="PluginProcessor.cpp" compile="1" resource="0"
@@ -14,6 +18,13 @@
             file="Source/PluginEditor.cpp"/>
       <FILE id="ifhXXP" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
+    <FILE id="BdZKWt" name="Helvetica.ttf" compile="0" resource="1" file="assets/Helvetica.ttf"/>
+    <FILE id="NjqeTC" name="Helvetica-Light.ttf" compile="0" resource="1"
+          file="assets/Helvetica-Light.ttf"/>
+    <FILE id="sLQ0j3" name="SpaceMono-Bold.ttf" compile="0" resource="1"
+          file="assets/SpaceMono-Bold.ttf"/>
+    <FILE id="tca0C3" name="SpaceMono-Regular.ttf" compile="0" resource="1"
+          file="assets/SpaceMono-Regular.ttf"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

@@ -50,7 +50,7 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
         {
             removeSound(0);
             juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file);
-            addSound(new juce::SamplerSound("default", *reader, noteRange, noteNumber, 0.f, 0.05f, 2.f));
+            addSound(new juce::SamplerSound("default", *reader, noteRange, noteNumber, 0.f, 0.02f, 2.f));
         }
 
         else { DBG(fpath + " does not exist"); }

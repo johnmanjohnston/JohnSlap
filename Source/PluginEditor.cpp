@@ -11,11 +11,13 @@
 
 //==============================================================================
 JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor (JohnSlapAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p)
+    : AudioProcessorEditor (&p), audioProcessor (p), kbComponent(p.kbState, juce::KeyboardComponentBase::horizontalKeyboard)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (400, 300);
+    setSize (WIDTH, HEIGHT);
+
+    addAndMakeVisible(kbComponent);
 }
 
 JohnSlapAudioProcessorEditor::~JohnSlapAudioProcessorEditor()
@@ -37,4 +39,5 @@ void JohnSlapAudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
+    kbComponent.setBounds(0, HEIGHT - 80, 850, 80);
 }
