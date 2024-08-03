@@ -18,6 +18,8 @@ JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor (JohnSlapAudioProcess
     setSize (WIDTH, HEIGHT);
 
     addAndMakeVisible(kbComponent);
+    p.kbState.addListener(&kbListener);
+    kbListener.addChangeListener(this);
 }
 
 JohnSlapAudioProcessorEditor::~JohnSlapAudioProcessorEditor()
@@ -46,4 +48,9 @@ void JohnSlapAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     kbComponent.setBounds(0, HEIGHT - 80, 850, 80);
+}
+
+void JohnSlapAudioProcessorEditor::changeListenerCallback(juce::ChangeBroadcaster* source)
+{
+    DBG(kbListener.activeNotes.size());
 }
