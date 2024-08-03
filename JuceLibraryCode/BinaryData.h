@@ -20,8 +20,11 @@ namespace BinaryData
     extern const char*   SpaceMonoRegular_ttf;
     const int            SpaceMonoRegular_ttfSize = 90904;
 
+    extern const char*   bass_img_png;
+    const int            bass_img_pngSize = 176525;
+
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 4;
+    const int namedResourceListSize = 5;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

@@ -25,6 +25,7 @@
           file="assets/SpaceMono-Bold.ttf"/>
     <FILE id="tca0C3" name="SpaceMono-Regular.ttf" compile="0" resource="1"
           file="assets/SpaceMono-Regular.ttf"/>
+    <FILE id="PPjy58" name="bass_img.png" compile="0" resource="1" file="assets/bass_img.png"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

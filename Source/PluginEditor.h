@@ -26,6 +26,18 @@ public:
     void resized() override;
 
     JSMidiKeyboardComponent kbComponent;
+
+    static const juce::Font getHelvetica()
+    {
+        static juce::Font typeface = juce::Typeface::createSystemTypefaceFor(BinaryData::Helvetica_ttf, BinaryData::Helvetica_ttfSize);
+        return typeface;
+    }
+
+    static const juce::Font getHelveticaLight()
+    {
+        static juce::Font typeface = juce::Typeface::createSystemTypefaceFor(BinaryData::HelveticaLight_ttf, BinaryData::HelveticaLight_ttfSize);
+        return typeface;
+    }
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.

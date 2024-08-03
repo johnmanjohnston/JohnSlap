@@ -28,11 +28,17 @@ JohnSlapAudioProcessorEditor::~JohnSlapAudioProcessorEditor()
 void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+    g.fillAll(juce::Colour(10, 10, 10));
+    g.setFont(getHelveticaLight());
 
-    g.setColour (juce::Colours::white);
-    g.setFont (15.0f);
-    g.drawFittedText ("JohnSlap", getLocalBounds(), juce::Justification::centred, 1);
+    g.setFont(34.f);
+    g.setColour(juce::Colour(100, 100, 100));
+    g.drawText("JohnSlap", 14, 0, 150, 50, juce::Justification::left, false);
+
+
+    g.addTransform(AffineTransform::scale(0.8));
+    juce::Image bassImg = juce::ImageCache::getFromMemory(BinaryData::bass_img_png, BinaryData::bass_img_pngSize);
+    g.drawImageWithin(bassImg, 186, 184, 816, 265, 0);
 }
 
 void JohnSlapAudioProcessorEditor::resized()
