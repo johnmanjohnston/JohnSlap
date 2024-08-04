@@ -18,6 +18,7 @@ JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor (JohnSlapAudioProcess
     setSize (WIDTH, HEIGHT);
 
     addAndMakeVisible(kbComponent);
+
     p.kbState.addListener(&kbListener);
     kbListener.addChangeListener(this);
 }
@@ -38,9 +39,9 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
     g.drawText("JohnSlap", 14, 0, 150, 50, juce::Justification::left, false);
 
 
-    g.addTransform(AffineTransform::scale(0.8));
+    g.addTransform(AffineTransform::scale(0.9));
     juce::Image bassImg = juce::ImageCache::getFromMemory(BinaryData::bass_img_png, BinaryData::bass_img_pngSize);
-    g.drawImageWithin(bassImg, 186, 184, 816, 265, 0);
+    g.drawImageWithin(bassImg, 70, 144, 816, 265, 0);
 }
 
 void JohnSlapAudioProcessorEditor::resized()
@@ -52,5 +53,6 @@ void JohnSlapAudioProcessorEditor::resized()
 
 void JohnSlapAudioProcessorEditor::changeListenerCallback(juce::ChangeBroadcaster* source)
 {
+    // TODO: look at kbListener.activeNotes and draw icons on the corresponding frets, maybe you'll need to call repaint()? 
     DBG(kbListener.activeNotes.size());
 }
