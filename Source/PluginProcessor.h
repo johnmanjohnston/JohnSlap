@@ -60,6 +60,8 @@ public:
     SlapSynth synth;
     
     juce::MidiKeyboardState kbState;
+
+    juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>> freqBoost;
 private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JohnSlapAudioProcessor)

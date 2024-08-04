@@ -98,6 +98,14 @@ void JohnSlapAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
 
     synth.setCurrentPlaybackSampleRate(sampleRate);
     synth.setup();
+
+    juce::dsp::ProcessSpec spec;
+    spec.maximumBlockSize = samplesPerBlock;
+    spec.numChannels = getTotalNumOutputChannels();
+    spec.sampleRate = sampleRate;
+
+    freqBoost.state = juce::dsp::IIR::Coefficients<float>::makePeakFilter(sampleRate, 5000.f, 1.f, 2.f);
+    freqBoost.prepare(spec);
 }
 
 void JohnSlapAudioProcessor::releaseResources()
@@ -160,10 +168,17 @@ void JohnSlapAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
         // ..do something to the data...
     }
 
+    // handle on-screen keyboard
     kbState.processNextMidiBuffer(midiMessages, 0, buffer.getNumSamples(), true);
 
+    // handle synth
     synth.updateSampleSource(midiMessages);
     synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
+
+    // dsp
+    juce::dsp::AudioBlock<float> block(buffer);
+    juce::dsp::ProcessContextReplacing<float> context(block);
+    freqBoost.process(context);
 }
 
 //==============================================================================

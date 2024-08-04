@@ -41,7 +41,7 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
 
     g.addTransform(AffineTransform::scale(0.9));
     juce::Image bassImg = juce::ImageCache::getFromMemory(BinaryData::bass_img_png, BinaryData::bass_img_pngSize);
-    g.drawImageWithin(bassImg, 70, 144, 816, 265, 0);
+    g.drawImageWithin(bassImg, 74, 144, 816, 265, 0);
 }
 
 void JohnSlapAudioProcessorEditor::resized()
