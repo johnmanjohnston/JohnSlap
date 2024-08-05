@@ -10016,6 +10016,14 @@ static const unsigned char temp_binary_data_4[] =
 
 const char* bass_img_png = (const char*) temp_binary_data_4;
 
+//================== fretmarker.png ==================
+static const unsigned char temp_binary_data_5[] =
+{ 137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,5,0,0,0,5,8,6,0,0,0,141,111,38,229,0,0,0,9,112,72,89,115,0,0,11,19,0,0,11,19,1,0,154,156,24,0,0,0,1,115,82,71,66,0,174,206,28,233,0,0,0,4,103,65,77,65,0,0,177,143,11,252,97,5,0,0,0,116,73,68,65,84,120,
+1,1,105,0,150,255,1,223,167,167,32,253,252,252,159,239,234,234,64,9,10,10,208,11,16,16,81,4,234,227,227,175,193,167,167,47,245,240,240,0,12,16,16,47,67,96,96,159,4,238,231,231,48,9,246,246,255,9,7,7,0,1,247,247,0,233,224,224,64,2,249,255,255,192,20,16,
+16,1,20,7,7,0,19,15,15,1,248,248,248,208,4,247,248,248,97,253,36,36,175,255,249,249,48,0,11,11,192,248,255,255,97,196,129,52,29,157,16,6,1,0,0,0,0,73,69,78,68,174,66,96,130,0,0 };
+
+const char* fretmarker_png = (const char*) temp_binary_data_5;
+
 
 const char* getNamedResource (const char* resourceNameUTF8, int& numBytes);
 const char* getNamedResource (const char* resourceNameUTF8, int& numBytes)
@@ -10033,6 +10041,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes)
         case 0xec2b9935:  numBytes = 86636; return SpaceMonoBold_ttf;
         case 0xb8cbc21a:  numBytes = 90904; return SpaceMonoRegular_ttf;
         case 0xb33b3e4d:  numBytes = 176525; return bass_img_png;
+        case 0xf7ef415f:  numBytes = 223; return fretmarker_png;
         default: break;
     }
 
@@ -10046,7 +10055,8 @@ const char* namedResourceList[] =
     "HelveticaLight_ttf",
     "SpaceMonoBold_ttf",
     "SpaceMonoRegular_ttf",
-    "bass_img_png"
+    "bass_img_png",
+    "fretmarker_png"
 };
 
 const char* originalFilenames[] =
@@ -10055,7 +10065,8 @@ const char* originalFilenames[] =
     "Helvetica-Light.ttf",
     "SpaceMono-Bold.ttf",
     "SpaceMono-Regular.ttf",
-    "bass_img.png"
+    "bass_img.png",
+    "fretmarker.png"
 };
 
 const char* getNamedResourceOriginalFilename (const char* resourceNameUTF8);

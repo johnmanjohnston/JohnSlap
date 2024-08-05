@@ -41,7 +41,14 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
 
     g.addTransform(AffineTransform::scale(0.9));
     juce::Image bassImg = juce::ImageCache::getFromMemory(BinaryData::bass_img_png, BinaryData::bass_img_pngSize);
-    g.drawImageWithin(bassImg, 74, 144, 816, 265, 0);
+    g.drawImageWithin(bassImg, 74, 144, 816, 265, NULL);
+
+    for (auto noteNumber : kbListener.activeNotes) 
+    {
+        juce::Image fretMarker = juce::ImageCache::getFromMemory(BinaryData::fretmarker_png, BinaryData::fretmarker_pngSize);
+        int* fretCoordinates = getFretCoordinates(noteNumber);
+        g.drawImageWithin(fretMarker, fretCoordinates[0], fretCoordinates[1], 10, 10, NULL);
+    }
 }
 
 void JohnSlapAudioProcessorEditor::resized()
@@ -55,4 +62,18 @@ void JohnSlapAudioProcessorEditor::changeListenerCallback(juce::ChangeBroadcaste
 {
     // TODO: look at kbListener.activeNotes and draw icons on the corresponding frets, maybe you'll need to call repaint()? 
     DBG(kbListener.activeNotes.size());
+    repaint();
+}
+
+int* JohnSlapAudioProcessorEditor::getFretCoordinates(int noteNumber)
+{
+    // at fret 5, the positions of strings starts to get a little off
+    int stringPositions[4] = { 299, 292, 283, 277 };
+
+    // from frets 0 to 7
+    //                      OPEN   1    2    3    4    5    6   7
+    int fretPositions[8] = { 263, 288, 320, 350, 377, 404, 428, 450 };
+
+    static int retval[2] = { 450, 299 };
+    return retval;
 }
