@@ -52,6 +52,9 @@ public:
     juce::MidiKeyboardState kbState;
 
     juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>> freqBoost;
+
+    juce::AudioParameterFloat* gainParameter;
+    juce::dsp::Gain<float> gain;
 private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JohnSlapAudioProcessor)

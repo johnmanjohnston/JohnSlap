@@ -3,7 +3,9 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "JSMidiKeyboardComponent.h"
+#include "JSLookAndFeel.h"
 
+//==============================================================================
 class KeyboardStateListener : public juce::MidiKeyboardState::Listener, public juce::ChangeBroadcaster {
 public:
     std::vector<int> activeNotes;
@@ -59,6 +61,11 @@ private:
 
     int HEIGHT = 400;
     int WIDTH = 800;
+
+    juce::Slider gainSlider;
+    juce::SliderParameterAttachment gainSliderAttachment;
+
+    JSLookAndFeel jsLookAndFeel;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JohnSlapAudioProcessorEditor)
 };

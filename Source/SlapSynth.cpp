@@ -54,6 +54,6 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
 
         else { DBG(fpath + " does not exist"); }
 
-        file = nullptr;
+        file = nullptr; 
     }
 }

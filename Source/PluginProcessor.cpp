@@ -22,6 +22,13 @@ JohnSlapAudioProcessor::JohnSlapAudioProcessor()
                        )
 #endif
 {
+    this->addParameter(gainParameter = new juce::AudioParameterFloat(
+        "gain",
+        "Gain",
+        0.f,
+        10.f,
+        8.f
+    ));
 }
 
 JohnSlapAudioProcessor::~JohnSlapAudioProcessor()
@@ -106,6 +113,8 @@ void JohnSlapAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
 
     freqBoost.state = juce::dsp::IIR::Coefficients<float>::makePeakFilter(sampleRate, 5000.f, 1.f, 2.f);
     freqBoost.prepare(spec);
+
+    gain.prepare(spec);
 }
 
 void JohnSlapAudioProcessor::releaseResources()
@@ -175,10 +184,15 @@ void JohnSlapAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     synth.updateSampleSource(midiMessages);
     synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
 
+    // handle params
+    gain.setGainLinear(gainParameter->get());
+
     // dsp
     juce::dsp::AudioBlock<float> block(buffer);
     juce::dsp::ProcessContextReplacing<float> context(block);
+
     freqBoost.process(context);
+    gain.process(context);
 }
 
 //==============================================================================

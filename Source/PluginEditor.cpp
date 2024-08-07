@@ -3,13 +3,15 @@
 
 //==============================================================================
 JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor (JohnSlapAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p), kbComponent(p.kbState, juce::KeyboardComponentBase::horizontalKeyboard)
+    : AudioProcessorEditor (&p), audioProcessor (p), kbComponent(p.kbState, juce::KeyboardComponentBase::horizontalKeyboard),
+      gainSliderAttachment(*p.gainParameter, gainSlider)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (WIDTH, HEIGHT);
 
     addAndMakeVisible(kbComponent);
+    addAndMakeVisible(gainSlider);
 
     p.kbState.addListener(&kbListener);
     kbListener.addChangeListener(this);
@@ -17,6 +19,7 @@ JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor (JohnSlapAudioProcess
 
 JohnSlapAudioProcessorEditor::~JohnSlapAudioProcessorEditor()
 {
+    gainSlider.setLookAndFeel(nullptr);
 }
 
 //==============================================================================
@@ -39,11 +42,15 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
         int* fretCoordinates = getFretCoordinates(noteNumber);
         g.drawImageWithin(fretMarker, fretCoordinates[0], fretCoordinates[1], 10, 10, NULL);
     }
+
+    // slider
+    gainSlider.setLookAndFeel(&jsLookAndFeel);
 }
 
 void JohnSlapAudioProcessorEditor::resized()
 {
     kbComponent.setBounds(0, HEIGHT - 80, 850, 80);
+    gainSlider.setBounds(100, 200, 200, 50);
 }
 
 void JohnSlapAudioProcessorEditor::changeListenerCallback(juce::ChangeBroadcaster* source)
