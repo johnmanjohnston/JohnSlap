@@ -3,7 +3,7 @@
 
     SlapSynth.cpp
     Created: 28 Jul 2024 3:59:09pm
-    Author:  USER
+    Author: Ethan John
 
   ==============================================================================
 */
@@ -36,10 +36,9 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
         const auto noteNumber = msg.getNoteNumber(); 
         const auto noteName = msg.getMidiNoteName(noteNumber, false, true, 3);
 
-        // TODO: update sample source based on noteName
         DBG(noteName);
 
-
+        // TO DO: ensure that fpath isn't initialized with a hardcoded string value
         juce::String fpath = "C:\\Users\\USER\\other-nerd-stuff\\projects\\JohnSlap\\samples\\trbx174\\";
         fpath.append(noteName, 3);
         fpath.append(".wav", 4);

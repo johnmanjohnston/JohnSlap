@@ -1,17 +1,8 @@
-/*
-  ==============================================================================
-
-    This file contains the basic framework code for a JUCE plugin editor.
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "JSMidiKeyboardComponent.h"
-
 
 class KeyboardStateListener : public juce::MidiKeyboardState::Listener, public juce::ChangeBroadcaster {
 public:
@@ -34,8 +25,6 @@ public:
 };
 
 //==============================================================================
-/**
-*/
 class JohnSlapAudioProcessorEditor  : public juce::AudioProcessorEditor, public juce::ChangeListener
 {
 public:
@@ -49,7 +38,6 @@ public:
     void changeListenerCallback(juce::ChangeBroadcaster* source);
 
     int* getFretCoordinates(int noteNumber);
-
 
     JSMidiKeyboardComponent kbComponent;
 
@@ -67,13 +55,10 @@ public:
 
     KeyboardStateListener kbListener;
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
     JohnSlapAudioProcessor& audioProcessor;
 
     int HEIGHT = 400;
     int WIDTH = 800;
-
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JohnSlapAudioProcessorEditor)
 };

@@ -3,7 +3,7 @@
 
     SlapSynth.h
     Created: 28 Jul 2024 3:59:09pm
-    Author:  USER
+    Author: Ethan John
 
   ==============================================================================
 */
@@ -16,7 +16,6 @@ public:
     void setup();
     void updateSampleSource(juce::MidiBuffer& midiMessages);
     juce::BigInteger noteRange;
-
 private:
     juce::AudioFormatManager afm;
 };
