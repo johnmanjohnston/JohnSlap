@@ -16,11 +16,11 @@ notes = [
 ]
 
 #fnameSuffix = input("Filename suffix: ")
-octave = 2
+octave = 4
 
 bpm = 120
 quarterNoteDuration = (60000 / bpm) * 4 # gives duration in ms. 60,000ms / bpm = duration # not actual quarter notes its actually a whole bar but who gives a fuck
-variantsPerNote = 1
+variantsPerNote = 2
 totalDivisions = len(notes) * variantsPerNote
 
 for i in range(totalDivisions):
@@ -36,4 +36,4 @@ for i in range(totalDivisions):
         audio = AudioSegment.from_wav("batch4.wav")
         
         audio = audio[start:end]
-        audio.export(f'trbx174/{notes[i]}{octave}.wav', format="wav")
+        audio.export(f'trbx174/slap/{notes[i]}{octave}{j}.wav', format="wav")

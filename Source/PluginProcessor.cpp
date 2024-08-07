@@ -111,7 +111,7 @@ void JohnSlapAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     spec.numChannels = getTotalNumOutputChannels();
     spec.sampleRate = sampleRate;
 
-    freqBoost.state = juce::dsp::IIR::Coefficients<float>::makePeakFilter(sampleRate, 5000.f, 1.f, 2.f);
+    freqBoost.state = juce::dsp::IIR::Coefficients<float>::makePeakFilter(sampleRate, 7000.f, 1.f, 2.f);
     freqBoost.prepare(spec);
 
     gain.prepare(spec);
