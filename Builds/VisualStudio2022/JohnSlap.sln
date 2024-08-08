@@ -2,15 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio Version 17
 
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JohnSlap - VST3", "JohnSlap_VST3.vcxproj", "{017982B9-C92C-1EAE-C139-B00F87D258D7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JohnSlap - Standalone Plugin", "JohnSlap_StandalonePlugin.vcxproj", "{73466D90-9180-17E4-01A6-E74A1276F0E6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4FF2866C-82A2-2D63-9232-ED2FF1DBBC27} = {4FF2866C-82A2-2D63-9232-ED2FF1DBBC27}
-		{5C77F79E-29A6-7C4E-D1F0-241AD1DBF8D2} = {5C77F79E-29A6-7C4E-D1F0-241AD1DBF8D2}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JohnSlap - Shared Code", "JohnSlap_SharedCode.vcxproj", "{4FF2866C-82A2-2D63-9232-ED2FF1DBBC27}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JohnSlap - VST3 Manifest Helper", "JohnSlap_VST3ManifestHelper.vcxproj", "{5C77F79E-29A6-7C4E-D1F0-241AD1DBF8D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,18 +15,14 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{017982B9-C92C-1EAE-C139-B00F87D258D7}.Debug|x64.ActiveCfg = Debug|x64
-		{017982B9-C92C-1EAE-C139-B00F87D258D7}.Debug|x64.Build.0 = Debug|x64
-		{017982B9-C92C-1EAE-C139-B00F87D258D7}.Release|x64.ActiveCfg = Release|x64
-		{017982B9-C92C-1EAE-C139-B00F87D258D7}.Release|x64.Build.0 = Release|x64
+		{73466D90-9180-17E4-01A6-E74A1276F0E6}.Debug|x64.ActiveCfg = Debug|x64
+		{73466D90-9180-17E4-01A6-E74A1276F0E6}.Debug|x64.Build.0 = Debug|x64
+		{73466D90-9180-17E4-01A6-E74A1276F0E6}.Release|x64.ActiveCfg = Release|x64
+		{73466D90-9180-17E4-01A6-E74A1276F0E6}.Release|x64.Build.0 = Release|x64
 		{4FF2866C-82A2-2D63-9232-ED2FF1DBBC27}.Debug|x64.ActiveCfg = Debug|x64
 		{4FF2866C-82A2-2D63-9232-ED2FF1DBBC27}.Debug|x64.Build.0 = Debug|x64
 		{4FF2866C-82A2-2D63-9232-ED2FF1DBBC27}.Release|x64.ActiveCfg = Release|x64
 		{4FF2866C-82A2-2D63-9232-ED2FF1DBBC27}.Release|x64.Build.0 = Release|x64
-		{5C77F79E-29A6-7C4E-D1F0-241AD1DBF8D2}.Debug|x64.ActiveCfg = Debug|x64
-		{5C77F79E-29A6-7C4E-D1F0-241AD1DBF8D2}.Debug|x64.Build.0 = Debug|x64
-		{5C77F79E-29A6-7C4E-D1F0-241AD1DBF8D2}.Release|x64.ActiveCfg = Release|x64
-		{5C77F79E-29A6-7C4E-D1F0-241AD1DBF8D2}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

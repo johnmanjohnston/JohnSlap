@@ -70,8 +70,8 @@ int* JohnSlapAudioProcessorEditor::getFretCoordinates(int noteNumber)
     int fretPositions[8] = { 263, 288, 320, 350, 377, 404, 428, 450 };
 
     // note number 28 is E1
-    int stringIndex = (noteNumber - 28) / 5;
-    int fretIndex = (noteNumber - 28) % 5;
+    int stringIndex = (noteNumber - 28 - 12) / 5;
+    int fretIndex = (noteNumber - 28 - 12) % 5;
 
     retval[0] = fretPositions[fretIndex];
     retval[1] = stringPositions[stringIndex];

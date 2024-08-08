@@ -33,12 +33,12 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
         const auto noteNumber = msg.getNoteNumber(); 
         const auto noteName = msg.getMidiNoteName(noteNumber, false, false, 3);
 
-        DBG(noteName);
+        DBG(noteNumber);
 
         // TO DO: ensure that fpath isn't initialized with a hardcoded string value
         juce::String fpath = "C:\\Users\\USER\\other-nerd-stuff\\projects\\JohnSlap\\samples\\trbx174\\";
         
-        if (noteNumber >= 40) fpath.append("pop/", 4);
+        if (noteNumber >= 52) fpath.append("pop/", 4);
         else fpath.append("slap/", 5);
 
         fpath.append(noteName, 3);
