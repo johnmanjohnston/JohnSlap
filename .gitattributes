@@ -68,3 +68,4 @@ Builds/** linguist-generated
 
 # when it shows "C" instead of "C++" it just looks cooler
 Source/Utility.h linguist-language=C
+Source/Common.h linguist-language=C
