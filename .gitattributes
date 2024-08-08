@@ -62,5 +62,5 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
-JuceLibraryCode/* linguist-vendored
-Builds/** linguist-vendored
+JuceLibraryCode/* linguist-generated
+Builds/** linguist-generated
