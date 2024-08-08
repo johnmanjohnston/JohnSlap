@@ -64,3 +64,4 @@
 
 JuceLibraryCode/* linguist-generated
 Builds/** linguist-generated
+*.py linguist-language=Cython
