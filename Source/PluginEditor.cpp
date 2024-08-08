@@ -1,6 +1,7 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 #include "Utility.h"
+#include "Common.h"
 
 //==============================================================================
 JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor (JohnSlapAudioProcessor& p)
@@ -16,9 +17,6 @@ JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor (JohnSlapAudioProcess
 
     p.kbState.addListener(&kbListener);
     kbListener.addChangeListener(this);
-
-    this->minNote = p.minNote;
-    this->maxNote = p.maxNote;
 }
 
 JohnSlapAudioProcessorEditor::~JohnSlapAudioProcessorEditor()
@@ -42,7 +40,7 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
 
     for (auto noteNumber : kbListener.activeNotes) 
     {
-        if (noteNumber > maxNote || noteNumber < minNote) 
+        if (noteNumber > MAXIMUM_NOTE || noteNumber < MINIMUM_NOTE) 
             continue;
 
         juce::Image fretMarker = juce::ImageCache::getFromMemory(BinaryData::fretmarker_png, BinaryData::fretmarker_pngSize);

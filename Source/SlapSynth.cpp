@@ -9,14 +9,15 @@
 */
 
 #include "SlapSynth.h"
+#include "Common.h"
 
-void SlapSynth::setup(int minNote, int maxNote)
+void SlapSynth::setup()
 {
     addVoice(new juce::SamplerVoice());
     addVoice(new juce::SamplerVoice());
 
     afm.registerBasicFormats();
-    noteRange.setRange(minNote, maxNote, true); // TO DO: when this plugin gets larger, update the noteRange to acommadate for more notes. also update the range in the PluginEditor constructor
+    noteRange.setRange(MINIMUM_NOTE, MAXIMUM_NOTE, true); // FIX IMMEDIATELY: note range defined here isnt' working properly
 
     juce::ScopedPointer<juce::File> file = new juce::File("C:\\Users\\USER\\OneDrive\\Documents\\Ableton\\Live Recordings\\2024-03-09 130654 Temp Project\\Samples\\Processed\\Consolidate\\GrandPiano C3 f [2024-03-09 130834].wav");
     juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file.get());

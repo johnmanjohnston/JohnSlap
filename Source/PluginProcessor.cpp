@@ -104,7 +104,7 @@ void JohnSlapAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     // initialisation that you need..
 
     synth.setCurrentPlaybackSampleRate(sampleRate);
-    synth.setup(minNote, maxNote);
+    synth.setup();
 
     juce::dsp::ProcessSpec spec;
     spec.maximumBlockSize = samplesPerBlock;

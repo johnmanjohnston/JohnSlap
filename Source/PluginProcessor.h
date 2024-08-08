@@ -49,9 +49,6 @@ public:
 
     SlapSynth synth;
 
-    int minNote = 40;
-    int maxNote = 63;
-    
     juce::MidiKeyboardState kbState;
 
     juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>> freqBoost;
