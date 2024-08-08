@@ -63,3 +63,4 @@
 #*.RTF   diff=astextplain
 
 JuceLibraryCode/* linguist-vendored
+Builds/** linguist-vendored
