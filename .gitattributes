@@ -65,3 +65,6 @@
 JuceLibraryCode/* linguist-generated
 Builds/** linguist-generated
 *.py linguist-language=Python
+
+# when it shows "C" instead of "C++" it just looks cooler
+Source/Utility.h linguist-language=C
