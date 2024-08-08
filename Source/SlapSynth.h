@@ -13,7 +13,7 @@
 
 class SlapSynth : public juce::Synthesiser {
 public:
-    void setup();
+    void setup(int minNote, int maxNote);
     void updateSampleSource(juce::MidiBuffer& midiMessages);
     juce::BigInteger noteRange;
 private:

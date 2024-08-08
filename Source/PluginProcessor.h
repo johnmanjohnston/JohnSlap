@@ -48,6 +48,9 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
 
     SlapSynth synth;
+
+    int minNote = 40;
+    int maxNote = 63;
     
     juce::MidiKeyboardState kbState;
 

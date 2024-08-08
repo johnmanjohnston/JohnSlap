@@ -62,6 +62,9 @@ private:
     int HEIGHT = 400;
     int WIDTH = 800;
 
+    int minNote = -1;
+    int maxNote = -1;
+
     juce::Slider gainSlider;
     juce::SliderParameterAttachment gainSliderAttachment;
 

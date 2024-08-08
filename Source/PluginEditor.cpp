@@ -15,6 +15,9 @@ JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor (JohnSlapAudioProcess
 
     p.kbState.addListener(&kbListener);
     kbListener.addChangeListener(this);
+
+    this->minNote = p.minNote;
+    this->maxNote = p.maxNote;
 }
 
 JohnSlapAudioProcessorEditor::~JohnSlapAudioProcessorEditor()
@@ -38,6 +41,9 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
 
     for (auto noteNumber : kbListener.activeNotes) 
     {
+        if (noteNumber > maxNote || noteNumber < minNote) 
+            continue;
+
         juce::Image fretMarker = juce::ImageCache::getFromMemory(BinaryData::fretmarker_png, BinaryData::fretmarker_pngSize);
         int* fretCoordinates = getFretCoordinates(noteNumber);
         g.drawImageWithin(fretMarker, fretCoordinates[0], fretCoordinates[1], 10, 10, NULL);
