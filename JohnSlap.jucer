@@ -2,8 +2,8 @@
 
 <JUCERPROJECT id="GrpB3P" name="JohnSlap" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
-              companyWebsite="https://johnmanjohnston.github.io/" pluginCharacteristicsValue="pluginIsSynth"
-              companyName="johnmanjohnston">
+              companyWebsite="https://johnmanjohnston.github.io/" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
+              companyName="johnmanjohnston" pluginFormats="buildVST3">
   <MAINGROUP id="nqUoqa" name="JohnSlap">
     <GROUP id="{722B7FBA-8D7D-7DF3-3409-F8229AD1D53D}" name="Source">
       <FILE id="NI4I3D" name="JSLookAndFeel.h" compile="0" resource="0" file="Source/JSLookAndFeel.h"/>
