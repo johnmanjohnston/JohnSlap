@@ -39,8 +39,6 @@ public:
 
     void changeListenerCallback(juce::ChangeBroadcaster* source);
 
-    int* getFretCoordinates(int noteNumber);
-
     JSMidiKeyboardComponent kbComponent;
 
     static const juce::Font getHelvetica()

@@ -3153,6 +3153,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Utility.h">
+      <Filter>JohnSlap\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\JSLookAndFeel.h">
       <Filter>JohnSlap\Source</Filter>
     </ClInclude>

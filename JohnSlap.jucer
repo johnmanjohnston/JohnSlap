@@ -6,6 +6,7 @@
               companyName="johnmanjohnston" pluginFormats="buildStandalone">
   <MAINGROUP id="nqUoqa" name="JohnSlap">
     <GROUP id="{722B7FBA-8D7D-7DF3-3409-F8229AD1D53D}" name="Source">
+      <FILE id="nXBWmY" name="Utility.h" compile="0" resource="0" file="Source/Utility.h"/>
       <FILE id="NI4I3D" name="JSLookAndFeel.h" compile="0" resource="0" file="Source/JSLookAndFeel.h"/>
       <FILE id="pRu7Kl" name="JSMidiKeyboardComponent.cpp" compile="1" resource="0"
             file="Source/JSMidiKeyboardComponent.cpp"/>

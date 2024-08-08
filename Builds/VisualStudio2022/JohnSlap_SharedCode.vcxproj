@@ -2499,6 +2499,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Utility.h"/>
     <ClInclude Include="..\..\Source\JSLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\JSMidiKeyboardComponent.h"/>
     <ClInclude Include="..\..\Source\SlapSynth.h"/>
