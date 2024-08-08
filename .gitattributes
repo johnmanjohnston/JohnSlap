@@ -61,3 +61,7 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+JuceLibraryCode/* linguist-generated
+Builds/** linguist-generated
+*.py linguist-language=Python
