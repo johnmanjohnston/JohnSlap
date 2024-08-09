@@ -26,8 +26,8 @@ JohnSlapAudioProcessor::JohnSlapAudioProcessor()
         "gain",
         "Gain",
         0.f,
-        10.f,
-        8.f
+        1.f,
+        0.8f
     ));
 }
 

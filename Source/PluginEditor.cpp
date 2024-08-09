@@ -41,7 +41,7 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
     versionText.append(JOHNSLAP_VERSION, 6);
     
     g.setFont(18.f);
-    g.drawText(versionText, WIDTH - 58, 6, 50, 26, juce::Justification::right, false);
+    g.drawText(versionText, WIDTH - 61, 6, 50, 26, juce::Justification::right, false);
 
     // draw bass image
     g.addTransform(AffineTransform::scale(0.9f));
@@ -64,14 +64,16 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
         g.drawImageWithin(fretMarker, fretCoordinates[0], fretCoordinates[1], 10, 10, NULL);
     }
 
-    // set look and feel
+    // configure sliders
     gainSlider.setLookAndFeel(&jsLookAndFeel);
+    gainSlider.setTextValueSuffix(" - GAIN");
+    gainSlider.setTextBoxStyle(juce::Slider::TextBoxLeft, false, 110, 14);
 }
 
 void JohnSlapAudioProcessorEditor::resized()
 {
     kbComponent.setBounds(0, HEIGHT - 80, 850, 80);
-    gainSlider.setBounds(100, 200, 240, 40);
+    gainSlider.setBounds(10, 221, 250, 40);
 }
 
 void JohnSlapAudioProcessorEditor::changeListenerCallback(juce::ChangeBroadcaster* source)

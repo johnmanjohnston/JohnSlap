@@ -35,7 +35,7 @@ private:
     {
         Typeface::Ptr typeface = Typeface::createSystemTypefaceFor(BinaryData::SpaceMonoRegular_ttf, BinaryData::SpaceMonoRegular_ttfSize);
         ScopedPointer<Font> font = new Font(typeface);
-        font->setHeight(19.f);
+        font->setHeight(22.f);
         return *font;
     }
 
@@ -54,7 +54,6 @@ public:
     {
         return getSpaceMono();
     }
-
 
     /*
     // https://github.com/juce-framework/JUCE/blob/master/modules/juce_gui_basics/lookandfeel/juce_LookAndFeel_V2.cpp
