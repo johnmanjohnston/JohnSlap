@@ -6152,6 +6152,9 @@
     <None Include="..\..\assets\Helvetica-Light.ttf">
       <Filter>JohnSlap</Filter>
     </None>
+    <None Include="..\..\assets\knobpanel.png">
+      <Filter>JohnSlap</Filter>
+    </None>
     <None Include="..\..\assets\SpaceMono-Bold.ttf">
       <Filter>JohnSlap</Filter>
     </None>

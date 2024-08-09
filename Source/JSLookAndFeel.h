@@ -39,14 +39,7 @@ private:
         return *font;
     }
 
-    /*
-        juce::Font getLabelFont(juce::Label& label) override
-        {
-            return this->getHelvetica();
-        }
-    */
 public:
-    /*
     JSLookAndFeel()
     {
         setColour(juce::Slider::thumbColourId, juce::Colour(220, 220, 220));
@@ -63,6 +56,7 @@ public:
     }
 
 
+    /*
     // https://github.com/juce-framework/JUCE/blob/master/modules/juce_gui_basics/lookandfeel/juce_LookAndFeel_V2.cpp
     juce::Slider::SliderLayout getSliderLayout(Slider& slider)
     {

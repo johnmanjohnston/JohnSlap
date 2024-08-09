@@ -3500,6 +3500,7 @@
   <ItemGroup>
     <None Include="..\..\assets\Helvetica.ttf"/>
     <None Include="..\..\assets\Helvetica-Light.ttf"/>
+    <None Include="..\..\assets\knobpanel.png"/>
     <None Include="..\..\assets\SpaceMono-Bold.ttf"/>
     <None Include="..\..\assets\SpaceMono-Regular.ttf"/>
     <None Include="..\..\assets\bass_img.png"/>

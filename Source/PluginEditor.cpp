@@ -44,9 +44,14 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
     g.drawText(versionText, WIDTH - 58, 6, 50, 26, juce::Justification::right, false);
 
     // draw bass image
-    g.addTransform(AffineTransform::scale(0.9));
+    g.addTransform(AffineTransform::scale(0.9f));
     juce::Image bassImg = juce::ImageCache::getFromMemory(BinaryData::bass_img_png, BinaryData::bass_img_pngSize);
-    g.drawImageWithin(bassImg, 74, 144, 816, 265, NULL);
+    g.drawImageWithin(bassImg, 74, 24, 816, 265, NULL);
+
+    // draw knob panel
+    g.addTransform(AffineTransform::scale(1.12f));
+    juce::Image panelImg = juce::ImageCache::getFromMemory(BinaryData::knobpanel_png, BinaryData::knobpanel_pngSize);
+    g.drawImageWithin(panelImg, 0, HEIGHT - 140, WIDTH, 119, NULL);
 
     // draw fret markers
     for (auto noteNumber : kbListener.activeNotes) 
@@ -66,7 +71,7 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
 void JohnSlapAudioProcessorEditor::resized()
 {
     kbComponent.setBounds(0, HEIGHT - 80, 850, 80);
-    gainSlider.setBounds(100, 200, 200, 50);
+    gainSlider.setBounds(100, 200, 240, 40);
 }
 
 void JohnSlapAudioProcessorEditor::changeListenerCallback(juce::ChangeBroadcaster* source)

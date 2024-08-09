@@ -63,7 +63,7 @@ public:
 private:
     JohnSlapAudioProcessor& audioProcessor;
 
-    int HEIGHT = 400;
+    int HEIGHT = 350;
     int WIDTH = 800;
 
     int minNote = -1;
