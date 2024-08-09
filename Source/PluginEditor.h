@@ -53,6 +53,12 @@ public:
         return typeface;
     }
 
+    static const juce::Font getSpaceMono() 
+    {
+        static juce::Font typeface = juce::Typeface::createSystemTypefaceFor(BinaryData::SpaceMonoRegular_ttf, BinaryData::SpaceMonoRegular_ttfSize);
+        return typeface;
+    }
+
     KeyboardStateListener kbListener;
 private:
     JohnSlapAudioProcessor& audioProcessor;
