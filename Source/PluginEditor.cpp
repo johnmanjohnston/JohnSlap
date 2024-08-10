@@ -65,16 +65,16 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
     }
 
     // configure sliders
-    gainSlider.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    // gainSlider.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
     gainSlider.setLookAndFeel(&jsLookAndFeel);
     gainSlider.setTextValueSuffix(" - GAIN");
-    gainSlider.setTextBoxStyle(juce::Slider::TextBoxLeft, false, 110, 14);
+    gainSlider.setTextBoxStyle(juce::Slider::TextBoxLeft, true, 110, 14); // set isReadOnly to true because it looks bad when trying to edit the text
 }
 
 void JohnSlapAudioProcessorEditor::resized()
 {
     kbComponent.setBounds(0, HEIGHT - 80, 850, 80);
-    gainSlider.setBounds(10, 221, 250, 70);
+    gainSlider.setBounds(10, 206, 250, 70);
 }
 
 void JohnSlapAudioProcessorEditor::changeListenerCallback(juce::ChangeBroadcaster* source)

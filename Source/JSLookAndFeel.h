@@ -55,7 +55,6 @@ public:
         return getSpaceMono();
     }
 
-    /*
     void drawLinearSliderBackground(Graphics& g, int x, int y, int width, int height,
         float sliderPos,
         float minSliderPos,
@@ -64,9 +63,7 @@ public:
     {
         //juce::LookAndFeel_V4::drawLinearSliderBackground(g, x, y, width, 2, sliderPos, minSliderPos, maxSliderPos, style, slider);
     }
-    */
 
-    /*
     // https://github.com/juce-framework/JUCE/blob/master/modules/juce_gui_basics/lookandfeel/juce_LookAndFeel_V4.cpp
     void drawLinearSlider(Graphics& g, int x, int y, int width, int height,
         float sliderPos, float minSliderPos, float maxSliderPos,
@@ -153,7 +150,6 @@ public:
             }
         }
     }
-    */
 
     /*
     // https://github.com/juce-framework/JUCE/blob/master/modules/juce_gui_basics/lookandfeel/juce_LookAndFeel_V2.cpp
@@ -168,6 +164,7 @@ public:
     }
     */
 
+    /*
     // https://docs.juce.com/master/tutorial_look_and_feel_customisation.html
     void drawRotarySlider(juce::Graphics& g, int x, int y, int width, int height, float sliderPos,
         const float rotaryStartAngle, const float rotaryEndAngle, juce::Slider&) override
@@ -194,4 +191,5 @@ public:
         g.setColour(juce::Colours::yellow);
         g.fillPath(p);
     }
+    */
 };
