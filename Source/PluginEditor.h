@@ -72,6 +72,12 @@ private:
     juce::Slider gainSlider;
     juce::SliderParameterAttachment gainSliderAttachment;
 
+    juce::Slider attackSlider;
+    juce::SliderParameterAttachment attackSliderAttachment;
+
+    juce::Slider releaseSlider;
+    juce::SliderParameterAttachment releaseSliderAttachment;
+
     JSLookAndFeel jsLookAndFeel;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JohnSlapAudioProcessorEditor)

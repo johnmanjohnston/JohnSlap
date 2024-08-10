@@ -54,13 +54,32 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
 
         if (file->exists()) 
         {
+            latestNoteNumber = noteNumber;
             removeSound(0);
             juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file);
-            addSound(new juce::SamplerSound("default", *reader, noteRange, noteNumber, 0.f, 0.02f, 2.f));
+            addSound(new juce::SamplerSound("default", *reader, noteRange, noteNumber, attackTime, releaseTime, 2.f));
         }
 
         else { DBG(fpath + " does not exist"); }
 
         file = nullptr; 
+    }
+}
+
+void SlapSynth::updateParamsIfNeeded(float attack, float release)
+{
+    if (attack == this->attackTime && release == this->releaseTime) return;
+
+    DBG("updating params");
+    attackTime = attack;
+    releaseTime = release;
+
+    juce::File* file = new juce::File(latestSamplePath);
+
+    if (file->exists())
+    {
+        removeSound(0);
+        juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file);
+        addSound(new juce::SamplerSound("default", *reader, noteRange, latestNoteNumber, attackTime, releaseTime, 2.f));
     }
 }

@@ -4,9 +4,9 @@
 #include "Common.h"
 
 //==============================================================================
-JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor (JohnSlapAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p), kbComponent(p.kbState, juce::KeyboardComponentBase::horizontalKeyboard),
-      gainSliderAttachment(*p.gainParameter, gainSlider)
+JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor(JohnSlapAudioProcessor& p)
+    : AudioProcessorEditor(&p), audioProcessor(p), kbComponent(p.kbState, juce::KeyboardComponentBase::horizontalKeyboard),
+    gainSliderAttachment(*p.gainParameter, gainSlider), attackSliderAttachment(*p.attackParam, attackSlider), releaseSliderAttachment(*p.releaseParam, releaseSlider)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
@@ -14,6 +14,8 @@ JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor (JohnSlapAudioProcess
 
     addAndMakeVisible(kbComponent);
     addAndMakeVisible(gainSlider);
+    addAndMakeVisible(attackSlider);
+    addAndMakeVisible(releaseSlider);
 
     p.kbState.addListener(&kbListener);
     kbListener.addChangeListener(this);
@@ -75,6 +77,8 @@ void JohnSlapAudioProcessorEditor::resized()
 {
     kbComponent.setBounds(0, HEIGHT - 80, 850, 80);
     gainSlider.setBounds(10, 206, 250, 70);
+    attackSlider.setBounds(150, 206, 250, 70);
+    releaseSlider.setBounds(250, 206, 250, 70);
 }
 
 void JohnSlapAudioProcessorEditor::changeListenerCallback(juce::ChangeBroadcaster* source)

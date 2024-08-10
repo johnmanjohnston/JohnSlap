@@ -16,6 +16,14 @@ public:
     void setup();
     void updateSampleSource(juce::MidiBuffer& midiMessages);
     juce::BigInteger noteRange;
+
+    void updateParamsIfNeeded(float attack, float release);
 private:
     juce::AudioFormatManager afm;
+
+    float attackTime = 0.f;
+    float releaseTime = 0.02f;
+
+    juce::String latestSamplePath = "";
+    int latestNoteNumber = -1;
 };

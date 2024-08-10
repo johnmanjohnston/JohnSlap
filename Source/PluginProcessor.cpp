@@ -29,6 +29,22 @@ JohnSlapAudioProcessor::JohnSlapAudioProcessor()
         1.f,
         0.8f
     ));
+    
+    this->addParameter(attackParam = new juce::AudioParameterFloat(
+        "attack",
+        "Attack Time",
+        0.f,
+        2.f,
+        0.f
+    ));
+
+    this->addParameter(releaseParam = new juce::AudioParameterFloat(
+        "release",
+        "Release Time",
+        0.f,
+        2.f,
+        2.f
+    ));
 }
 
 JohnSlapAudioProcessor::~JohnSlapAudioProcessor()
@@ -179,6 +195,7 @@ void JohnSlapAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
 
     // handle synth
     synth.updateSampleSource(midiMessages);
+    synth.updateParamsIfNeeded(attackParam->get(), releaseParam->get());
     synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
 
     // handle params
