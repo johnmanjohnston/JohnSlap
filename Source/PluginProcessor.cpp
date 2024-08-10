@@ -29,6 +29,14 @@ JohnSlapAudioProcessor::JohnSlapAudioProcessor()
         1.f,
         0.8f
     ));
+
+    this->addParameter(toneParameter = new juce::AudioParameterFloat(
+        "tone",
+        "Tone",
+        0.f,
+        1.f,
+        0.5
+    ));
 }
 
 JohnSlapAudioProcessor::~JohnSlapAudioProcessor()
@@ -111,10 +119,11 @@ void JohnSlapAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     spec.numChannels = getTotalNumOutputChannels();
     spec.sampleRate = sampleRate;
 
-    freqBoost.state = juce::dsp::IIR::Coefficients<float>::makePeakFilter(sampleRate, 7000.f, 1.f, 2.f);
-    freqBoost.prepare(spec);
-
     gain.prepare(spec);
+
+    toneFilter.state->type = juce::dsp::StateVariableFilter::Parameters<float>::Type::lowPass;
+    toneFilter.state->setCutOffFrequency(sampleRate, 100.f);
+    toneFilter.prepare(spec);
 }
 
 void JohnSlapAudioProcessor::releaseResources()
@@ -187,11 +196,14 @@ void JohnSlapAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     // handle params
     gain.setGainLinear(gainParameter->get());
 
+    float cutoff = toneParameter->get() * maxToneCutoff;
+    toneFilter.state->setCutOffFrequency(getSampleRate(), cutoff);
+
     // dsp
     juce::dsp::AudioBlock<float> block(buffer);
     juce::dsp::ProcessContextReplacing<float> context(block);
 
-    freqBoost.process(context);
+    toneFilter.process(context);
     gain.process(context);
 }
 

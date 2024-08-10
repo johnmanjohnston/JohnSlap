@@ -6,7 +6,7 @@
 //==============================================================================
 JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor (JohnSlapAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p), kbComponent(p.kbState, juce::KeyboardComponentBase::horizontalKeyboard),
-      gainSliderAttachment(*p.gainParameter, gainSlider)
+      gainSliderAttachment(*p.gainParameter, gainSlider), toneSliderAttachment(*p.toneParameter, toneSlider)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
@@ -14,6 +14,7 @@ JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor (JohnSlapAudioProcess
 
     addAndMakeVisible(kbComponent);
     addAndMakeVisible(gainSlider);
+    addAndMakeVisible(toneSlider);
 
     p.kbState.addListener(&kbListener);
     kbListener.addChangeListener(this);
@@ -22,6 +23,7 @@ JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor (JohnSlapAudioProcess
 JohnSlapAudioProcessorEditor::~JohnSlapAudioProcessorEditor()
 {
     gainSlider.setLookAndFeel(nullptr);
+    toneSlider.setLookAndFeel(nullptr);
 }
 
 //==============================================================================
@@ -69,12 +71,17 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
     gainSlider.setLookAndFeel(&jsLookAndFeel);
     gainSlider.setTextValueSuffix(" - GAIN");
     gainSlider.setTextBoxStyle(juce::Slider::TextBoxLeft, true, 110, 14); // set isReadOnly to true because it looks bad when trying to edit the text
+    
+    toneSlider.setLookAndFeel(&jsLookAndFeel);
+    toneSlider.setTextValueSuffix(" - TONE");
+    toneSlider.setTextBoxStyle(juce::Slider::TextBoxLeft, true, 110, 14);
 }
 
 void JohnSlapAudioProcessorEditor::resized()
 {
     kbComponent.setBounds(0, HEIGHT - 80, 850, 80);
     gainSlider.setBounds(10, 206, 250, 70);
+    toneSlider.setBounds(400, 206, 250, 70);
 }
 
 void JohnSlapAudioProcessorEditor::changeListenerCallback(juce::ChangeBroadcaster* source)
