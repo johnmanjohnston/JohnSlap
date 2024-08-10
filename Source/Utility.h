@@ -10,6 +10,7 @@
 
 #pragma once
 
+// FIXME: this returns wrong coordinates since you moved the position of the bass
 int* getFretCoordinates(int noteNumber)
 {
     static int retval[2] = { 0, 0 };
@@ -26,7 +27,7 @@ int* getFretCoordinates(int noteNumber)
     int fretIndex = (noteNumber - 28 - 12) % 5;
 
     retval[0] = fretPositions[fretIndex];
-    retval[1] = stringPositions[stringIndex];
+    retval[1] = stringPositions[stringIndex] - 120;
 
     return retval;
 }

@@ -17,7 +17,7 @@ void SlapSynth::setup()
     addVoice(new juce::SamplerVoice());
 
     afm.registerBasicFormats();
-    noteRange.setRange(MINIMUM_NOTE, MAXIMUM_NOTE, true); // FIX IMMEDIATELY: note range defined here isnt' working properly
+    noteRange.setRange(MINIMUM_NOTE, MAXIMUM_NOTE - MINIMUM_NOTE, true);
 
     juce::ScopedPointer<juce::File> file = new juce::File("C:\\Users\\USER\\OneDrive\\Documents\\Ableton\\Live Recordings\\2024-03-09 130654 Temp Project\\Samples\\Processed\\Consolidate\\GrandPiano C3 f [2024-03-09 130834].wav");
     juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file.get());
@@ -36,7 +36,7 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
 
         DBG(noteNumber);
 
-        // TO DO: ensure that fpath isn't initialized with a hardcoded string value
+        // TODO: ensure that fpath isn't initialized with a hardcoded string value
         juce::String fpath = "C:\\Users\\USER\\other-nerd-stuff\\projects\\JohnSlap\\samples\\trbx174\\";
         
         if (noteNumber >= 52) fpath.append("pop/", 4);
