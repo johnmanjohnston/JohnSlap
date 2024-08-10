@@ -51,14 +51,9 @@ public:
 
     juce::MidiKeyboardState kbState;
 
-    juce::dsp::ProcessorDuplicator<juce::dsp::StateVariableFilter::Filter <float>, juce::dsp::StateVariableFilter::Parameters <float>> toneFilter;
-    float maxToneCutoff = 10000.f;
-
     juce::dsp::Gain<float> gain;
     
     juce::AudioParameterFloat* gainParameter;
-    juce::AudioParameterFloat* toneParameter;
-
 
 private:
     //==============================================================================
