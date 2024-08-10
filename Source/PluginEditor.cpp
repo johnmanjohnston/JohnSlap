@@ -75,7 +75,7 @@ void JohnSlapAudioProcessorEditor::resized()
 {
     kbComponent.setBounds(0, HEIGHT - 80, 850, 80);
     gainSlider.setBounds(10, 206, 250, 70);
-}AAAA
+}
 
 void JohnSlapAudioProcessorEditor::changeListenerCallback(juce::ChangeBroadcaster* source)
 {
