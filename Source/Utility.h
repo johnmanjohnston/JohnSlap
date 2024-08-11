@@ -9,17 +9,15 @@
 */
 
 #pragma once
+#include "Common.h"
 
-// FIXME: string positions start to get a little off as you move across the fretboard
 int* getFretCoordinates(int noteNumber)
 {
     static int retval[2] = { 0, 0 };
 
-    // at fret 5, the positions of strings starts to get a little off
-    int stringPositions[4] = { 160, 153, 145, 140 };
+    if (noteNumber > MAXIMUM_NOTE || noteNumber < MINIMUM_NOTE) return retval;
 
-    // from frets 0 to 7
-    //                      OPEN   1    2    3    4    5    6   7
+    int stringPositions[4] = { 160, 153, 146, 140 };
     int fretPositions[8] = { 234, 260, 286, 314, 338, 360, 380, 402 };
 
     // note number 28 is E1
@@ -31,12 +29,13 @@ int* getFretCoordinates(int noteNumber)
     {
         fretIndex = (noteNumber - 55);
         stringIndex = 3;
-
-        std::cout << "index: " << fretIndex << "val" << fretPositions[fretIndex];
     }
 
+    float stringDeviationWeights[4] = { .4f, .1f, -.1f, -.4f };
+    float stringDeviation = fretIndex * stringDeviationWeights[stringIndex];
+
     retval[0] = fretPositions[fretIndex];
-    retval[1] = stringPositions[stringIndex];
+    retval[1] = stringPositions[stringIndex] + stringDeviation;
 
     return retval;
 }
