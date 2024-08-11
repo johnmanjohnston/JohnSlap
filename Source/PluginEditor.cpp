@@ -24,6 +24,8 @@ JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor(JohnSlapAudioProcesso
 JohnSlapAudioProcessorEditor::~JohnSlapAudioProcessorEditor()
 {
     gainSlider.setLookAndFeel(nullptr);
+    attackSlider.setLookAndFeel(nullptr);
+    releaseSlider.setLookAndFeel(nullptr);
 }
 
 //==============================================================================
@@ -71,14 +73,23 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
     gainSlider.setLookAndFeel(&jsLookAndFeel);
     gainSlider.setTextValueSuffix(" - GAIN");
     gainSlider.setTextBoxStyle(juce::Slider::TextBoxLeft, true, 110, 14); // set isReadOnly to true because it looks bad when trying to edit the text
+    
+    attackSlider.setLookAndFeel(&jsLookAndFeel);
+    attackSlider.setTextValueSuffix(" - ATTACK");
+    attackSlider.setTextBoxStyle(juce::Slider::TextBoxLeft, true, 110, 14);
+
+    releaseSlider.setLookAndFeel(&jsLookAndFeel);
+    releaseSlider.setTextValueSuffix(" - RELEASE");
+    releaseSlider.setTextBoxStyle(juce::Slider::TextBoxLeft, true, 110, 14);
 }
 
 void JohnSlapAudioProcessorEditor::resized()
 {
     kbComponent.setBounds(0, HEIGHT - 80, 850, 80);
-    gainSlider.setBounds(10, 206, 250, 70);
-    attackSlider.setBounds(150, 206, 250, 70);
-    releaseSlider.setBounds(250, 206, 250, 70);
+
+    gainSlider.setBounds((WIDTH / 3) - (250), 206, 250, 70);
+    attackSlider.setBounds((WIDTH  / 2) - (250/ 2), 206, 250, 70);
+    releaseSlider.setBounds(18 + (WIDTH / 3) + (250), 206, 250, 70);
 }
 
 void JohnSlapAudioProcessorEditor::changeListenerCallback(juce::ChangeBroadcaster* source)
