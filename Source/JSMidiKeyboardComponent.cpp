@@ -9,6 +9,7 @@
 */
 
 #include "JSMidiKeyboardComponent.h"
+#include "Common.h"
 
 JSMidiKeyboardComponent::JSMidiKeyboardComponent(MidiKeyboardState& state, Orientation orientation) : MidiKeyboardComponent(state, orientation)
 {
@@ -27,6 +28,8 @@ void JSMidiKeyboardComponent::drawWhiteNote(int midiNoteNumber, Graphics& g, Rec
     const auto currentOrientation = getOrientation();
 
     auto text = getWhiteNoteText(midiNoteNumber);
+
+   
 
     if (text.isNotEmpty())
     {
@@ -68,6 +71,11 @@ void JSMidiKeyboardComponent::drawWhiteNote(int midiNoteNumber, Graphics& g, Rec
             }
         }
     }
+
+    if (midiNoteNumber < MINIMUM_NOTE && midiNoteNumber >= (MINIMUM_NOTE - TRIGGER_NOTES_COUNT))
+    {
+        addTriggerNoteOverlay(g, area);
+    }
 }
 
 void JSMidiKeyboardComponent::drawBlackNote(int midiNoteNumber, Graphics& g, Rectangle<float> area, bool isDown, bool isOver, Colour noteFillColour)
@@ -101,4 +109,18 @@ void JSMidiKeyboardComponent::drawBlackNote(int midiNoteNumber, Graphics& g, Rec
         default: break;
         }
     }
+
+    if (midiNoteNumber < MINIMUM_NOTE && midiNoteNumber >= (MINIMUM_NOTE - TRIGGER_NOTES_COUNT))
+    {
+        addTriggerNoteOverlay(g, area);
+    }
+}
+
+void JSMidiKeyboardComponent::addTriggerNoteOverlay(Graphics& g, Rectangle<float> area)
+{
+    g.setColour(Colour(0, 0, 100));
+    g.setOpacity(.2f);
+    g.fillRect(area);
+
+    g.setOpacity(1.f);
 }

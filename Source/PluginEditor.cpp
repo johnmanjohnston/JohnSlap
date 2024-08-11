@@ -19,6 +19,8 @@ JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor(JohnSlapAudioProcesso
 
     p.kbState.addListener(&kbListener);
     kbListener.addChangeListener(this);
+
+    kbComponent.setAvailableRange(35, 119);
 }
 
 JohnSlapAudioProcessorEditor::~JohnSlapAudioProcessorEditor()
