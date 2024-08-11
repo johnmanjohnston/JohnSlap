@@ -15,8 +15,6 @@ int* getFretCoordinates(int noteNumber)
 {
     static int retval[2] = { 0, 0 };
 
-    if (noteNumber > MAXIMUM_NOTE || noteNumber < MINIMUM_NOTE) return retval;
-
     int stringPositions[4] = { 160, 153, 146, 140 };
     int fretPositions[8] = { 234, 260, 286, 314, 338, 360, 380, 402 };
 

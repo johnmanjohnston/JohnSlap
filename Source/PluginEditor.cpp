@@ -62,12 +62,12 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
     // draw fret markers
     for (auto noteNumber : kbListener.activeNotes) 
     {
-        if (noteNumber > MAXIMUM_NOTE || noteNumber < MINIMUM_NOTE) 
-            continue;
-
-        juce::Image fretMarker = juce::ImageCache::getFromMemory(BinaryData::fretmarker_png, BinaryData::fretmarker_pngSize);
-        int* fretCoordinates = getFretCoordinates(noteNumber);
-        g.drawImageWithin(fretMarker, fretCoordinates[0], fretCoordinates[1], 10, 10, NULL);
+        if (noteNumber <= MAXIMUM_NOTE && noteNumber >= MINIMUM_NOTE)
+        {
+            juce::Image fretMarker = juce::ImageCache::getFromMemory(BinaryData::fretmarker_png, BinaryData::fretmarker_pngSize);
+            int* fretCoordinates = getFretCoordinates(noteNumber);
+            g.drawImageWithin(fretMarker, fretCoordinates[0], fretCoordinates[1], 10, 10, NULL);
+        }
     }
 
     // configure sliders
