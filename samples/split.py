@@ -33,7 +33,7 @@ for i in range(totalDivisions):
         start = (i * variantsPerNote + j) * quarterNoteDuration
         end = (i * variantsPerNote + j + 1) * quarterNoteDuration
 
-        audio = AudioSegment.from_wav("batch4.wav")
+        audio = AudioSegment.from_wav("batch4_misc.wav")
         
         audio = audio[start:end]
-        audio.export(f'trbx174/slap/{notes[i]}{octave}{j}.wav', format="wav")
+        audio.export(f'trbx174/misc/{notes[i]}{octave}{j}.wav', format="wav")
