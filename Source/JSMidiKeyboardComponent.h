@@ -3,7 +3,7 @@
 
     JSMidiKeyboardComponent.h
     Created: 2 Aug 2024 8:20:30pm
-    Author:  USER
+    Author: Ethan John
 
   ==============================================================================
 */

@@ -3,10 +3,12 @@
 
     JSLookAndFeel.h
     Created: 7 Aug 2024 2:36:54pm
-    Author:  USER
+    Author: Ethan John
 
   ==============================================================================
 */
+
+// TODO: a lot of the stuff in this file is useless--clean it up 
 
 #pragma once
 #include <JuceHeader.h>

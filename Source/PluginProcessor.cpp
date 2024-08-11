@@ -1,11 +1,3 @@
-/*
-  ==============================================================================
-
-    This file contains the basic framework code for a JUCE plugin processor.
-
-  ==============================================================================
-*/
-
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
@@ -33,17 +25,15 @@ JohnSlapAudioProcessor::JohnSlapAudioProcessor()
     this->addParameter(attackParam = new juce::AudioParameterFloat(
         "attack",
         "Attack Time",
-        0.f,
-        2.f,
+        juce::NormalisableRange<float>(0.f, 2.f, .02f),
         0.f
     ));
 
     this->addParameter(releaseParam = new juce::AudioParameterFloat(
         "release",
         "Release Time",
-        0.f,
-        2.f,
-        2.f
+        juce::NormalisableRange<float>(0.f, 2.f, .02f),
+        0.2f
     ));
 }
 
@@ -168,28 +158,6 @@ void JohnSlapAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
 
-    // In case we have more outputs than inputs, this code clears any output
-    // channels that didn't contain input data, (because these aren't
-    // guaranteed to be empty - they may contain garbage).
-    // This is here to avoid people getting screaming feedback
-    // when they first compile a plugin, but obviously you don't need to keep
-    // this code if your algorithm always overwrites all the output channels.
-    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
-        buffer.clear (i, 0, buffer.getNumSamples());
-
-    // This is the place where you'd normally do the guts of your plugin's
-    // audio processing...
-    // Make sure to reset the state if your inner loop is processing
-    // the samples and the outer loop is handling the channels.
-    // Alternatively, you can process the samples with the channels
-    // interleaved by keeping the same state.
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
-    {
-        auto* channelData = buffer.getWritePointer (channel);
-
-        // ..do something to the data...
-    }
-
     // handle on-screen keyboard
     kbState.processNextMidiBuffer(midiMessages, 0, buffer.getNumSamples(), true);
 
@@ -222,10 +190,6 @@ juce::AudioProcessorEditor* JohnSlapAudioProcessor::createEditor()
 //==============================================================================
 void JohnSlapAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
-
     juce::MemoryOutputStream(destData, true).writeFloat(*gainParameter);
     juce::MemoryOutputStream(destData, true).writeFloat(*attackParam);
     juce::MemoryOutputStream(destData, true).writeFloat(*releaseParam);
@@ -233,9 +197,6 @@ void JohnSlapAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 
 void JohnSlapAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
-
     *gainParameter = juce::MemoryInputStream(data, static_cast<size_t>(sizeInBytes), false).readFloat();
     *attackParam = juce::MemoryInputStream(data, static_cast<size_t>(sizeInBytes), false).readFloat();
     *releaseParam = juce::MemoryInputStream(data, static_cast<size_t>(sizeInBytes), false).readFloat();
