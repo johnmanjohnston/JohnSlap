@@ -19,7 +19,7 @@ notes = [
 octave = 4
 
 bpm = 120
-quarterNoteDuration = (60000 / bpm) * 4 # gives duration in ms. 60,000ms / bpm = duration # not actual quarter notes its actually a whole bar but who gives a fuck
+quarterNoteDuration = (60000 / bpm) * 4 # gives duration in ms. 60,000ms / bpm = duration # not actual quarter notes its actually a whole bar
 variantsPerNote = 2
 totalDivisions = len(notes) * variantsPerNote
 
