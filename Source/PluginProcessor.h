@@ -57,6 +57,7 @@ public:
     juce::AudioParameterFloat* attackParam;
     juce::AudioParameterFloat* releaseParam;
 
+    std::vector<int> activeNotes;
 private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JohnSlapAudioProcessor)

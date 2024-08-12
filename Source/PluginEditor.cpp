@@ -15,10 +15,8 @@ JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor(JohnSlapAudioProcesso
     addAndMakeVisible(attackSlider);
     addAndMakeVisible(releaseSlider);
 
-    p.kbState.addListener(&kbListener);
-    kbListener.addChangeListener(this);
-
     kbComponent.setAvailableRange(35, 119);
+    startTimer(50);
 }
 
 JohnSlapAudioProcessorEditor::~JohnSlapAudioProcessorEditor()
@@ -58,8 +56,10 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
     g.drawImageWithin(panelImg, 0, HEIGHT - 140, WIDTH, 119, NULL);
 
     // draw fret markers
-    for (auto noteNumber : kbListener.activeNotes) 
+    for (auto noteNumber : audioProcessor.activeNotes) 
     {
+        DBG("active note:" << noteNumber);
+
         if (noteNumber <= MAXIMUM_NOTE && noteNumber >= MINIMUM_NOTE)
         {
             juce::Image fretMarker = juce::ImageCache::getFromMemory(BinaryData::fretmarker_png, BinaryData::fretmarker_pngSize);
@@ -90,9 +90,4 @@ void JohnSlapAudioProcessorEditor::resized()
     gainSlider.setBounds((WIDTH / 3) - (250), 206, 250, 70);
     attackSlider.setBounds((WIDTH  / 2) - (250/ 2), 206, 250, 70);
     releaseSlider.setBounds(18 + (WIDTH / 3) + (250), 206, 250, 70);
-}
-
-void JohnSlapAudioProcessorEditor::changeListenerCallback(juce::ChangeBroadcaster* source)
-{
-    repaint();
 }

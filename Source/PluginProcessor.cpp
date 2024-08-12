@@ -109,7 +109,7 @@ void JohnSlapAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     synth.setCurrentPlaybackSampleRate(sampleRate);
     synth.setup();
 
-    juce::dsp::ProcessSpec spec;
+    juce::dsp::ProcessSpec spec{};
     spec.maximumBlockSize = samplesPerBlock;
     spec.numChannels = getTotalNumOutputChannels();
     spec.sampleRate = sampleRate;
@@ -149,9 +149,13 @@ bool JohnSlapAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts)
 
 void JohnSlapAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
+
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
+
+    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
+        buffer.clear(i, 0, buffer.getNumSamples());
 
     // handle on-screen keyboard
     kbState.processNextMidiBuffer(midiMessages, 0, buffer.getNumSamples(), true);
@@ -169,6 +173,27 @@ void JohnSlapAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     juce::dsp::ProcessContextReplacing<float> context(block);
 
     gain.process(context);
+
+    for (const auto midiData : midiMessages) 
+    {
+        auto msg = midiData.getMessage();
+        auto noteNumber = msg.getNoteNumber();
+
+        if (msg.isNoteOn()) 
+        {
+            activeNotes.push_back(noteNumber);
+        }
+
+        if (msg.isNoteOff()) 
+        {
+            for (auto it = activeNotes.begin(); it != activeNotes.end(); ++it) {
+                if (*it == noteNumber) {
+                    activeNotes.erase(it);
+                    break;
+                }
+            }
+        }
+    }
 }
 
 //==============================================================================

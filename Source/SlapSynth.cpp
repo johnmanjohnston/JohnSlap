@@ -16,7 +16,9 @@ void SlapSynth::setup()
     addVoice(new juce::SamplerVoice());
     addVoice(new juce::SamplerVoice());
 
-    afm.registerBasicFormats();
+    if (afm.findFormatForFileExtension("wav") == nullptr)
+        afm.registerBasicFormats();
+    
     noteRange.setRange(MINIMUM_NOTE - TRIGGER_NOTES_COUNT, MAXIMUM_NOTE - MINIMUM_NOTE + TRIGGER_NOTES_COUNT + 1, true);
 
     juce::ScopedPointer<juce::File> file = new juce::File("C:\\Users\\USER\\OneDrive\\Documents\\Ableton\\Live Recordings\\2024-03-09 130654 Temp Project\\Samples\\Processed\\Consolidate\\GrandPiano C3 f [2024-03-09 130834].wav");
@@ -36,7 +38,7 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
         const auto noteNumber = msg.getNoteNumber(); 
         const auto noteName = msg.getMidiNoteName(noteNumber, false, false, 3);
 
-        DBG(noteNumber);
+        // DBG(noteNumber);
 
         // juce::String fpath = "C:\\Users\\USER\\other-nerd-stuff\\projects\\JohnSlap\\samples\\trbx174\\";
         juce::String fpath = juce::File::getSpecialLocation(juce::File::SpecialLocationType::globalApplicationsDirectory)
@@ -74,7 +76,7 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
 
         if (file->exists()) 
         {
-            DBG(fpath);
+            // DBG(fpath);
             latestNoteNumber = noteNumber;
             removeSound(0);
             juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file);
