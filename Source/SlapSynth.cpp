@@ -21,7 +21,12 @@ void SlapSynth::setup()
     
     noteRange.setRange(MINIMUM_NOTE - TRIGGER_NOTES_COUNT, MAXIMUM_NOTE - MINIMUM_NOTE + TRIGGER_NOTES_COUNT + 1, true);
 
-    juce::ScopedPointer<juce::File> file = new juce::File("C:\\Users\\USER\\OneDrive\\Documents\\Ableton\\Live Recordings\\2024-03-09 130654 Temp Project\\Samples\\Processed\\Consolidate\\GrandPiano C3 f [2024-03-09 130834].wav");
+    // initialize with sample of muted slap thing
+    juce::String fpath = juce::File::getSpecialLocation(juce::File::SpecialLocationType::globalApplicationsDirectory)
+        .getChildFile("johnmanjohnston/johnslap/samples/trbx174/misc/3.wav")
+        .getFullPathName();
+
+    juce::ScopedPointer<juce::File> file = new juce::File(fpath);
     juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file.get());
 
     addSound(new juce::SamplerSound("default", *reader, noteRange, 69, 0.f, 0.2f, 2.f));
