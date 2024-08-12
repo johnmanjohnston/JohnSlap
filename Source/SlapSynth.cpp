@@ -48,6 +48,7 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
         // play a note on the bass
         if (noteNumber >= MINIMUM_NOTE) 
         {
+            // slap or pop?
             if (noteNumber >= 52) fpath.append("pop/", 4);
             else fpath.append("slap/", 5);
 
@@ -63,9 +64,6 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
         else 
         {
             fpath.append("/misc/", 6);
-
-            // DBG("trigger note");
-            // DBG(-1 * ((MINIMUM_NOTE - TRIGGER_NOTES_COUNT) - noteNumber));
 
             int triggerNumber = -1 * ((MINIMUM_NOTE - TRIGGER_NOTES_COUNT) - noteNumber);
             fpath.append(juce::String(triggerNumber), 1);
@@ -92,7 +90,6 @@ void SlapSynth::updateParamsIfNeeded(float attack, float release)
 {
     if (attack == this->attackTime && release == this->releaseTime) return;
 
-    // DBG("updating params");
     attackTime = attack;
     releaseTime = release;
 

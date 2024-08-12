@@ -8,8 +8,6 @@ JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor(JohnSlapAudioProcesso
     : AudioProcessorEditor(&p), audioProcessor(p), kbComponent(p.kbState, juce::KeyboardComponentBase::horizontalKeyboard),
     gainSliderAttachment(*p.gainParameter, gainSlider), attackSliderAttachment(*p.attackParam, attackSlider), releaseSliderAttachment(*p.releaseParam, releaseSlider)
 {
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
     setSize (WIDTH, HEIGHT);
 
     addAndMakeVisible(kbComponent);
@@ -71,10 +69,10 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
     }
 
     // configure sliders
-    // gainSlider.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    // set isReadOnly to true for sliders because it looks bad when trying to edit the text
     gainSlider.setLookAndFeel(&jsLookAndFeel);
     gainSlider.setTextValueSuffix(" - GAIN");
-    gainSlider.setTextBoxStyle(juce::Slider::TextBoxLeft, true, 110, 14); // set isReadOnly to true because it looks bad when trying to edit the text
+    gainSlider.setTextBoxStyle(juce::Slider::TextBoxLeft, true, 110, 14); 
     
     attackSlider.setLookAndFeel(&jsLookAndFeel);
     attackSlider.setTextValueSuffix(" - ATTACK");

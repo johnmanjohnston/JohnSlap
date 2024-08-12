@@ -35,8 +35,5 @@ int* getFretCoordinates(int noteNumber)
     retval[0] = fretPositions[fretIndex];
     retval[1] = stringPositions[stringIndex] + stringDeviation;
 
-    DBG(stringIndex);
-    DBG(fretIndex);
-
     return retval;
 }

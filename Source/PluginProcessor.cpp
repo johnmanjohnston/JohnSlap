@@ -106,9 +106,6 @@ void JohnSlapAudioProcessor::changeProgramName (int index, const juce::String& n
 //==============================================================================
 void JohnSlapAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
-
     synth.setCurrentPlaybackSampleRate(sampleRate);
     synth.setup();
 
@@ -122,8 +119,6 @@ void JohnSlapAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
 
 void JohnSlapAudioProcessor::releaseResources()
 {
-    // When playback stops, you can use this as an opportunity to free up any
-    // spare memory, etc.
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
