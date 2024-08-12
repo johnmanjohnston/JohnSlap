@@ -53,7 +53,7 @@ public:
 
     juce::dsp::Gain<float> gain;
     
-    juce::AudioParameterFloat* gainParameter;
+    juce::AudioParameterFloat* gainParam;
     juce::AudioParameterFloat* attackParam;
     juce::AudioParameterFloat* releaseParam;
 

@@ -14,7 +14,7 @@ JohnSlapAudioProcessor::JohnSlapAudioProcessor()
                        )
 #endif
 {
-    this->addParameter(gainParameter = new juce::AudioParameterFloat(
+    this->addParameter(gainParam = new juce::AudioParameterFloat(
         "gain",
         "Gain",
         0.f,
@@ -166,7 +166,7 @@ void JohnSlapAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
 
     // handle params
-    gain.setGainLinear(gainParameter->get());
+    gain.setGainLinear(gainParam->get());
 
     // dsp
     juce::dsp::AudioBlock<float> block(buffer);
@@ -210,16 +210,18 @@ juce::AudioProcessorEditor* JohnSlapAudioProcessor::createEditor()
 //==============================================================================
 void JohnSlapAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    juce::MemoryOutputStream(destData, true).writeFloat(*gainParameter);
-    juce::MemoryOutputStream(destData, true).writeFloat(*attackParam);
-    juce::MemoryOutputStream(destData, true).writeFloat(*releaseParam);
+    juce::MemoryOutputStream stream(destData, true);
+    stream.writeFloat(*gainParam);
+    stream.writeFloat(*attackParam);
+    stream.writeFloat(*releaseParam);
 }
 
 void JohnSlapAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    *gainParameter = juce::MemoryInputStream(data, static_cast<size_t>(sizeInBytes), false).readFloat();
-    *attackParam = juce::MemoryInputStream(data, static_cast<size_t>(sizeInBytes), false).readFloat();
-    *releaseParam = juce::MemoryInputStream(data, static_cast<size_t>(sizeInBytes), false).readFloat();
+    juce::MemoryInputStream stream(data, static_cast<size_t>(sizeInBytes), false);
+    *gainParam = stream.readFloat();
+    *attackParam = stream.readFloat();
+    *releaseParam = stream.readFloat();
 }
 
 //==============================================================================

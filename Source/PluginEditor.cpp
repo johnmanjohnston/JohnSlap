@@ -6,7 +6,7 @@
 //==============================================================================
 JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor(JohnSlapAudioProcessor& p)
     : AudioProcessorEditor(&p), audioProcessor(p), kbComponent(p.kbState, juce::KeyboardComponentBase::horizontalKeyboard),
-    gainSliderAttachment(*p.gainParameter, gainSlider), attackSliderAttachment(*p.attackParam, attackSlider), releaseSliderAttachment(*p.releaseParam, releaseSlider)
+    gainSliderAttachment(*p.gainParam, gainSlider), attackSliderAttachment(*p.attackParam, attackSlider), releaseSliderAttachment(*p.releaseParam, releaseSlider)
 {
     setSize (WIDTH, HEIGHT);
 
