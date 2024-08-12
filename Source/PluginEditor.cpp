@@ -16,7 +16,7 @@ JohnSlapAudioProcessorEditor::JohnSlapAudioProcessorEditor(JohnSlapAudioProcesso
     addAndMakeVisible(releaseSlider);
 
     kbComponent.setAvailableRange(35, 119);
-    startTimer(50);
+    startTimer(20);
 }
 
 JohnSlapAudioProcessorEditor::~JohnSlapAudioProcessorEditor()

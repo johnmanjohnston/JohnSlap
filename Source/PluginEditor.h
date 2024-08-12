@@ -38,7 +38,7 @@ public:
 
     void timerCallback() override
     {
-        repaint();
+        repaint(74, 24, 816, 265);
     }
 private:
     JohnSlapAudioProcessor& audioProcessor;
