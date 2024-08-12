@@ -17,12 +17,14 @@ void SlapSynth::setup()
     addVoice(new juce::SamplerVoice());
 
     afm.registerBasicFormats();
-    noteRange.setRange(MINIMUM_NOTE - TRIGGER_NOTES_COUNT, MAXIMUM_NOTE - MINIMUM_NOTE + TRIGGER_NOTES_COUNT, true);
+    noteRange.setRange(MINIMUM_NOTE - TRIGGER_NOTES_COUNT, MAXIMUM_NOTE - MINIMUM_NOTE + TRIGGER_NOTES_COUNT + 1, true);
 
     juce::ScopedPointer<juce::File> file = new juce::File("C:\\Users\\USER\\OneDrive\\Documents\\Ableton\\Live Recordings\\2024-03-09 130654 Temp Project\\Samples\\Processed\\Consolidate\\GrandPiano C3 f [2024-03-09 130834].wav");
     juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file.get());
 
     addSound(new juce::SamplerSound("default", *reader, noteRange, 69, 0.f, 0.2f, 2.f));
+
+    DBG(MAXIMUM_NOTE - MINIMUM_NOTE + TRIGGER_NOTES_COUNT);
 }
 
 void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
@@ -43,8 +45,6 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
 
         fpath.append("/trbx174/", 9);
 
-        DBG(fpath);
-
         // play a note on the bass
         if (noteNumber >= MINIMUM_NOTE) 
         {
@@ -64,8 +64,8 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
         {
             fpath.append("/misc/", 6);
 
-            DBG("trigger note");
-            DBG(-1 * ((MINIMUM_NOTE - TRIGGER_NOTES_COUNT) - noteNumber));
+            // DBG("trigger note");
+            // DBG(-1 * ((MINIMUM_NOTE - TRIGGER_NOTES_COUNT) - noteNumber));
 
             int triggerNumber = -1 * ((MINIMUM_NOTE - TRIGGER_NOTES_COUNT) - noteNumber);
             fpath.append(juce::String(triggerNumber), 1);
@@ -76,11 +76,13 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
 
         if (file->exists()) 
         {
+            DBG(fpath);
             latestNoteNumber = noteNumber;
             removeSound(0);
             juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file);
             addSound(new juce::SamplerSound("default", *reader, noteRange, noteNumber, attackTime, releaseTime, 2.f));
         }
+
 
         else { DBG(fpath + " does not exist"); }
     }
@@ -90,7 +92,7 @@ void SlapSynth::updateParamsIfNeeded(float attack, float release)
 {
     if (attack == this->attackTime && release == this->releaseTime) return;
 
-    DBG("updating params");
+    // DBG("updating params");
     attackTime = attack;
     releaseTime = release;
 

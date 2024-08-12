@@ -16,7 +16,7 @@ int* getFretCoordinates(int noteNumber)
     static int retval[2] = { 0, 0 };
 
     int stringPositions[4] = { 160, 153, 146, 140 };
-    int fretPositions[8] = { 234, 260, 286, 314, 338, 360, 380, 402 };
+    int fretPositions[9] = { 234, 260, 286, 314, 338, 360, 380, 402, 422 };
 
     // note number 28 is E1
     int stringIndex = (noteNumber - 28 - 12) / 5;
@@ -34,6 +34,9 @@ int* getFretCoordinates(int noteNumber)
 
     retval[0] = fretPositions[fretIndex];
     retval[1] = stringPositions[stringIndex] + stringDeviation;
+
+    DBG(stringIndex);
+    DBG(fretIndex);
 
     return retval;
 }
