@@ -36,9 +36,15 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
 
         DBG(noteNumber);
 
-        // TODO: ensure that fpath isn't initialized with a hardcoded string value
-        juce::String fpath = "C:\\Users\\USER\\other-nerd-stuff\\projects\\JohnSlap\\samples\\trbx174\\";
-        
+        // juce::String fpath = "C:\\Users\\USER\\other-nerd-stuff\\projects\\JohnSlap\\samples\\trbx174\\";
+        juce::String fpath = juce::File::getSpecialLocation(juce::File::SpecialLocationType::globalApplicationsDirectory)
+            .getChildFile("johnmanjohnston/johnslap/samples/")
+            .getFullPathName();
+
+        fpath.append("/trbx174/", 9);
+
+        DBG(fpath);
+
         // play a note on the bass
         if (noteNumber >= MINIMUM_NOTE) 
         {
