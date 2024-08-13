@@ -51,9 +51,6 @@ private:
     int HEIGHT = 350;
     int WIDTH = 800;
 
-    int minNote = -1;
-    int maxNote = -1;
-
     juce::Slider gainSlider;
     juce::SliderParameterAttachment gainSliderAttachment;
 
@@ -64,6 +61,8 @@ private:
     juce::SliderParameterAttachment releaseSliderAttachment;
 
     JSLookAndFeel jsLookAndFeel;
+
+    void styleSlider(juce::Slider& slider, juce::String suffix);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JohnSlapAudioProcessorEditor)
 };
