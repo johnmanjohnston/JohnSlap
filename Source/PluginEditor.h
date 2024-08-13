@@ -36,10 +36,15 @@ public:
         return typeface;
     }
 
+    int knownActiveNotesSize = -1;
+    int knownLastNote = -1;
+
     void timerCallback() override
     {
-        repaint(74, 24, 816, 265);
+        if (knownActiveNotesSize != audioProcessor.activeNotes.size() || audioProcessor.lastNote != knownLastNote)
+            repaint(74, 24, 816, 265);
     }
+
 private:
     JohnSlapAudioProcessor& audioProcessor;
 

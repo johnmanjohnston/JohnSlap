@@ -56,6 +56,9 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
     g.drawImageWithin(panelImg, 0, HEIGHT - 140, WIDTH, 119, NULL);
 
     // draw fret markers
+    knownActiveNotesSize = audioProcessor.activeNotes.size();
+    knownLastNote = audioProcessor.lastNote;
+
     for (auto noteNumber : audioProcessor.activeNotes) 
     {
         DBG("active note:" << noteNumber);

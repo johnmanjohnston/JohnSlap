@@ -182,6 +182,7 @@ void JohnSlapAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
         if (msg.isNoteOn()) 
         {
             activeNotes.push_back(noteNumber);
+            lastNote = noteNumber;
         }
 
         if (msg.isNoteOff()) 
