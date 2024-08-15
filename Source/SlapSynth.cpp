@@ -29,8 +29,8 @@ void SlapSynth::setup()
     juce::String fpath = johnslapSamplesDirectory;
     fpath.append("/trbx174/misc/3.wav", 19);
 
-    juce::ScopedPointer<juce::File> file = new juce::File(fpath);
-    juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file.get());
+    juce::File file(fpath);
+    reader = std::unique_ptr<juce::AudioFormatReader>(afm.createReaderFor(file));
 
     addSound(new juce::SamplerSound("default", *reader, noteRange, 69, 0.f, 0.2f, 2.f));
 
@@ -78,17 +78,16 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
         }
 
         fpath.append(".wav", 4);
-        juce::File* file = new juce::File(fpath);
+        juce::File file(fpath);
 
-        if (file->exists()) 
+        if (file.exists()) 
         {
             // DBG(fpath);
             latestNoteNumber = noteNumber;
             removeSound(0);
-            juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file);
+            reader = std::unique_ptr<juce::AudioFormatReader>(afm.createReaderFor(file));
             addSound(new juce::SamplerSound("default", *reader, noteRange, noteNumber, attackTime, releaseTime, 2.f));
         }
-
 
         else { DBG(fpath + " does not exist"); }
     }
@@ -101,12 +100,11 @@ void SlapSynth::updateParamsIfNeeded(float attack, float release)
     attackTime = attack;
     releaseTime = release;
 
-    juce::File* file = new juce::File(latestSamplePath);
+    juce::File file(latestSamplePath);
 
-    if (file->exists())
-    {
-        removeSound(0);
-        juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file);
-        addSound(new juce::SamplerSound("default", *reader, noteRange, latestNoteNumber, attackTime, releaseTime, 2.f));
-    }
+    if (file.exists() == false) return;
+
+    removeSound(0);
+    reader = std::unique_ptr<juce::AudioFormatReader>(afm.createReaderFor(file));
+    addSound(new juce::SamplerSound("default", *reader, noteRange, latestNoteNumber, attackTime, releaseTime, 2.f));
 }

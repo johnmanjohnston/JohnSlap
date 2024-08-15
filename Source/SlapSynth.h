@@ -20,6 +20,7 @@ public:
     void updateParamsIfNeeded(float attack, float release);
 private:
     juce::AudioFormatManager afm;
+    std::unique_ptr<juce::AudioFormatReader> reader;
 
     float attackTime = 0.f;
     float releaseTime = 0.02f;
