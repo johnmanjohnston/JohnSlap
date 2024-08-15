@@ -9,6 +9,9 @@ New features and improvements will be released to enhance the functionality of J
 # Demo
 TO DO
 
+# Installation
+TO DO
+
 # License
 TO DO
 
@@ -16,7 +19,7 @@ TO DO
 - Clone the Git repository
 - Open the .jucer file in the Projucer
 - Saved and Open in IDE
-- Under the Build tab, select Build Solution (Ctrl + Shift + B)
+- Under the Build tab, select Build Solution (Ctrl+Shift+ B)
 
 # Misc
 Gear Used:
