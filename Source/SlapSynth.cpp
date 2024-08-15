@@ -22,9 +22,12 @@ void SlapSynth::setup()
     noteRange.setRange(MINIMUM_NOTE - TRIGGER_NOTES_COUNT, MAXIMUM_NOTE - MINIMUM_NOTE + TRIGGER_NOTES_COUNT + 1, true);
 
     // initialize with sample of muted slap thing
-    juce::String fpath = juce::File::getSpecialLocation(juce::File::SpecialLocationType::globalApplicationsDirectory)
-        .getChildFile("johnmanjohnston/johnslap/samples/trbx174/misc/3.wav")
+    johnslapSamplesDirectory = juce::File::getSpecialLocation(juce::File::SpecialLocationType::globalApplicationsDirectory)
+        .getChildFile("johnmanjohnston/johnslap/samples/")
         .getFullPathName();
+
+    juce::String fpath = johnslapSamplesDirectory;
+    fpath.append("/trbx174/misc/3.wav", 19);
 
     juce::ScopedPointer<juce::File> file = new juce::File(fpath);
     juce::ScopedPointer<juce::AudioFormatReader> reader = afm.createReaderFor(*file.get());
@@ -46,9 +49,7 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
         // DBG(noteNumber);
 
         // juce::String fpath = "C:\\Users\\USER\\other-nerd-stuff\\projects\\JohnSlap\\samples\\trbx174\\";
-        juce::String fpath = juce::File::getSpecialLocation(juce::File::SpecialLocationType::globalApplicationsDirectory)
-            .getChildFile("johnmanjohnston/johnslap/samples/")
-            .getFullPathName();
+        juce::String fpath = johnslapSamplesDirectory;
 
         fpath.append("/trbx174/", 9);
 

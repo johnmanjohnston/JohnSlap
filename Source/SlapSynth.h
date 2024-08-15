@@ -26,4 +26,6 @@ private:
 
     juce::String latestSamplePath = "";
     int latestNoteNumber = -1;
+
+    juce::String johnslapSamplesDirectory = "";
 };
