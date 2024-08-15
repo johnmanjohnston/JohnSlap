@@ -19,10 +19,9 @@ TO DO
 - Clone the Git repository
 - Open the .jucer file in the Projucer
 - Saved and Open in IDE
-- Under the Build tab, select Build Solution (Ctrl+Shift+ B)
+- Under the Build tab, select Build Solution (Ctrl+Shift+B)
 
 # Misc
 Gear Used:
 - Focusrite Scarlett 2i2 Studio 3rd Gen
 - Yamaha TRBX174
-  
