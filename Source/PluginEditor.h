@@ -18,15 +18,9 @@ public:
 
     JSMidiKeyboardComponent kbComponent;
 
-    static const juce::Font getHelvetica()
+    static const juce::Font getInterThin() 
     {
-        static juce::Font typeface = juce::Typeface::createSystemTypefaceFor(BinaryData::Helvetica_ttf, BinaryData::Helvetica_ttfSize);
-        return typeface;
-    }
-
-    static const juce::Font getHelveticaLight()
-    {
-        static juce::Font typeface = juce::Typeface::createSystemTypefaceFor(BinaryData::HelveticaLight_ttf, BinaryData::HelveticaLight_ttfSize);
+        static juce::Font typeface = juce::Typeface::createSystemTypefaceFor(BinaryData::InterThin_ttf, BinaryData::InterThin_ttfSize);
         return typeface;
     }
 

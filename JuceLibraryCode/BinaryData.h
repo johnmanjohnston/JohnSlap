@@ -29,8 +29,11 @@ namespace BinaryData
     extern const char*   fretmarker_png;
     const int            fretmarker_pngSize = 223;
 
+    extern const char*   InterThin_ttf;
+    const int            InterThin_ttfSize = 343088;
+
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 7;
+    const int namedResourceListSize = 8;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

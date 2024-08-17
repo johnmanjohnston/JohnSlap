@@ -3,7 +3,7 @@
 <JUCERPROJECT id="GrpB3P" name="JohnSlap" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
               companyWebsite="https://johnmanjohnston.github.io/" pluginCharacteristicsValue="pluginIsSynth,pluginProducesMidiOut,pluginWantsMidiIn"
-              companyName="johnmanjohnston" pluginFormats="buildVST3">
+              companyName="johnmanjohnston" pluginFormats="buildStandalone">
   <MAINGROUP id="nqUoqa" name="JohnSlap">
     <GROUP id="{722B7FBA-8D7D-7DF3-3409-F8229AD1D53D}" name="Source">
       <FILE id="fSGo41" name="Common.h" compile="0" resource="0" file="Source/Common.h"/>
@@ -33,6 +33,7 @@
           file="assets/SpaceMono-Regular.ttf"/>
     <FILE id="PPjy58" name="bass_img.png" compile="0" resource="1" file="assets/bass_img.png"/>
     <FILE id="kgp9vd" name="fretmarker.png" compile="0" resource="1" file="assets/fretmarker.png"/>
+    <FILE id="oqlj1Q" name="Inter-Thin.ttf" compile="0" resource="1" file="assets/Inter-Thin.ttf"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

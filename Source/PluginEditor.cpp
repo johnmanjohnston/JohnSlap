@@ -33,7 +33,7 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
     g.fillAll(juce::Colour(10, 10, 10));
 
     // draw "JohnSlap" on top left
-    g.setFont(getHelvetica());
+    g.setFont(getInterThin());
     g.setFont(34.f);
     g.setColour(juce::Colour(100, 100, 100));
     g.drawText("JohnSlap", 14, 0, 150, 50, juce::Justification::left, false);
