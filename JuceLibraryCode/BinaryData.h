@@ -8,12 +8,6 @@
 
 namespace BinaryData
 {
-    extern const char*   Helvetica_ttf;
-    const int            Helvetica_ttfSize = 312960;
-
-    extern const char*   HelveticaLight_ttf;
-    const int            HelveticaLight_ttfSize = 161716;
-
     extern const char*   knobpanel_png;
     const int            knobpanel_pngSize = 795;
 
@@ -33,7 +27,7 @@ namespace BinaryData
     const int            InterThin_ttfSize = 343088;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 8;
+    const int namedResourceListSize = 6;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

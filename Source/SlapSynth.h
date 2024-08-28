@@ -18,6 +18,8 @@ public:
     juce::BigInteger noteRange;
 
     void updateParamsIfNeeded(float attack, float release);
+
+    int sampleLoadTime = 50; // ms
 private:
     juce::AudioFormatManager afm;
     std::unique_ptr<juce::AudioFormatReader> reader;
