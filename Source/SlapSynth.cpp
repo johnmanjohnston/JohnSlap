@@ -85,8 +85,7 @@ void SlapSynth::updateSampleSource(juce::MidiBuffer& midiMessages)
             latestNoteNumber = noteNumber;
             removeSound(0);
             reader = std::unique_ptr<juce::AudioFormatReader>(afm.createReaderFor(file));
-            juce::Time::waitForMillisecondCounter(sampleLoadTime); // this might be one of the worst ideas in the history of ideas
-            addSound(new juce::SamplerSound("default", *reader, noteRange, noteNumber, attackTime, releaseTime, 2.f));
+            addSamplerSoundToSampler();
         }
 
         else { DBG(fpath + " does not exist"); }
@@ -106,6 +105,11 @@ void SlapSynth::updateParamsIfNeeded(float attack, float release)
 
     removeSound(0);
     reader = std::unique_ptr<juce::AudioFormatReader>(afm.createReaderFor(file));
-    juce::Time::waitForMillisecondCounter(sampleLoadTime); // this might be one of the worst ideas in the history of ideas
+    addSamplerSoundToSampler();
+}
+
+void SlapSynth::addSamplerSoundToSampler()
+{
+    if (reader == nullptr) return;
     addSound(new juce::SamplerSound("default", *reader, noteRange, latestNoteNumber, attackTime, releaseTime, 2.f));
 }
