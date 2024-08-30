@@ -15,14 +15,6 @@ using namespace juce;
 class JSLookAndFeel : public LookAndFeel_V4
 {
 private:
-    Font getHelvetica()
-    {
-        juce::Typeface::Ptr typeface = juce::Typeface::createSystemTypefaceFor(BinaryData::Helvetica_ttf, BinaryData::HelveticaLight_ttfSize);
-        juce::ScopedPointer<juce::Font> font = new juce::Font(typeface);
-        font->setHeight(18);
-        return *font;
-    }
-
     Font getSpaceMonoBold()
     {
         Typeface::Ptr typeface = Typeface::createSystemTypefaceFor(BinaryData::SpaceMonoBold_ttf, BinaryData::SpaceMonoBold_ttfSize);

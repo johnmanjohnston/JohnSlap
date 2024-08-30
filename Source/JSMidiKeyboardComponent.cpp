@@ -36,7 +36,6 @@ void JSMidiKeyboardComponent::drawWhiteNote(int midiNoteNumber, Graphics& g, Rec
         auto fontHeight = jmin(12.0f, getKeyWidth() * 0.9f);
 
         g.setColour(textColour);
-        g.setFont(getHelveticaLight());
         g.setFont(12.f);
 
         switch (currentOrientation)
