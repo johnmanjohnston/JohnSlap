@@ -14,6 +14,7 @@
 void SlapSynth::setup()
 {
     addVoice(new juce::SamplerVoice());
+    addVoice(new juce::SamplerVoice());
 
     if (afm.findFormatForFileExtension("wav") == nullptr)
         afm.registerBasicFormats();

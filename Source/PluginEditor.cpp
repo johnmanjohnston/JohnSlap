@@ -33,17 +33,20 @@ void JohnSlapAudioProcessorEditor::paint (juce::Graphics& g)
     g.fillAll(juce::Colour(10, 10, 10));
 
     // draw "JohnSlap" on top left
-    g.setFont(getInterThin());
-    g.setFont(34.f);
-    g.setColour(juce::Colour(100, 100, 100));
-    g.drawText("JohnSlap", 14, 0, 150, 50, juce::Justification::left, false);
+    juce::Image logo = juce::ImageCache::getFromMemory(BinaryData::jslogo_png, BinaryData::jslogo_pngSize);
+    g.setOpacity(0.2f);
+    g.drawImageWithin(logo, 12, 10, 269 / 2, 69 / 2, juce::Justification::left, false);
 
     // draw version on top right
+    g.setColour(juce::Colours::white);
+    g.setOpacity(0.2f);
     juce::String versionText = "v"; 
     versionText.append(JOHNSLAP_VERSION, 6);
     
     g.setFont(18.f);
     g.drawText(versionText, WIDTH - 61, 6, 50, 26, juce::Justification::right, false);
+
+    g.setOpacity(1.f);
 
     // draw bass image
     g.addTransform(AffineTransform::scale(0.9f));

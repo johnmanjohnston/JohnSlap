@@ -31,6 +31,7 @@
     <FILE id="PPjy58" name="bass_img.png" compile="0" resource="1" file="assets/bass_img.png"/>
     <FILE id="kgp9vd" name="fretmarker.png" compile="0" resource="1" file="assets/fretmarker.png"/>
     <FILE id="oqlj1Q" name="Inter-Thin.ttf" compile="0" resource="1" file="assets/Inter-Thin.ttf"/>
+    <FILE id="aaK6cv" name="jslogo.png" compile="0" resource="1" file="assets/jslogo.png"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

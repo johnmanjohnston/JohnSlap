@@ -26,8 +26,11 @@ namespace BinaryData
     extern const char*   InterThin_ttf;
     const int            InterThin_ttfSize = 343088;
 
+    extern const char*   jslogo_png;
+    const int            jslogo_pngSize = 8468;
+
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 6;
+    const int namedResourceListSize = 7;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];
