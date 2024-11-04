@@ -23,9 +23,6 @@ For Linux-based operating systems:
 
 You may then proceed to install the binaries to run JohnSlap
 
-# License
-TO DO
-
 # Building (on Windows, with Visual Studio)
 - Clone the Git repository
 - Open the .jucer file in the Projucer
