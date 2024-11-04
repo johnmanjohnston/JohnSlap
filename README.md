@@ -15,7 +15,7 @@ TO DO
 For Windows:
  C:\Program Files\johnmanjohnston\johnslap\ (replace drive letter accordingly)
 
-For macOS
+For macOS:
  /Applications/johnmanjohnston/johnslap/
 
 For Linux-based operating systems:
