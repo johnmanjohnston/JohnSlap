@@ -10,7 +10,18 @@ New features and improvements will be released to enhance the functionality of J
 TO DO
 
 # Installation
-TO DO
+ Running JohnSlap can be done in two ways: as a standalone (only on Windows), or as a VST3 plugin. You must first download to samples onto the appropriate directory.
+
+For Windows:
+ C:\Program Files\johnmanjohnston\johnslap\ (replace drive letter accordingly)
+
+For macOS
+ /Applications/johnmanjohnston/johnslap/
+
+For Linux-based operating systems:
+ /usr/johnmanjohnston/johnslap/
+
+You may then proceed to install the binaries to run JohnSlap
 
 # License
 TO DO
