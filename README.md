@@ -7,8 +7,8 @@ JohnSlap is a very new plugin, and is in very early stages of development.
 New features and improvements will be released to enhance the functionality of JohnSlap.
 
 # Demo
-A demo of how JohnSlap sounds can be found here:
-[JohnSlap demo](https://github.com/johnmanjohnston/JohnSlap/blob/master/samples/johnslap-test.mp3)
+A demo of how JohnSlap sounds can be found here. The audio begins with a bassline (played by JohnSlap), then the same bassline with a drum loop
+https://github.com/user-attachments/assets/c77cd47a-9102-4f83-9b1f-3622d2330698
 
 # Installation
  Running JohnSlap can be done in two ways: as a standalone (only on Windows), or as a VST3 plugin. You must first download to samples onto the appropriate directory.
